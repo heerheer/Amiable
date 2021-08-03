@@ -1,0 +1,32 @@
+﻿using Amiable.SDK;
+using Amiable.SDK.Interface;
+using System.IO;
+using System.Text;
+
+namespace Amiable.Adapter.XQ
+{
+    /// <summary>
+    /// 允许将AppInfo转换为先驱可用的Json
+    /// </summary>
+    public class XQAppInfoConverter : IAppInfoConverter
+    {
+
+        public string Convert(AppInfo info)
+        {
+            using (var stream = new MemoryStream())
+            {
+                System.Text.Json.Utf8JsonWriter json = new(stream);
+                json.WriteStartObject();
+                json.WriteString("name", info.Name);
+                json.WriteString("pver", info.Version);
+                json.WriteNumber("sver", 3);
+                json.WriteString("author ", info.Author);
+                json.WriteString("desc  ", info.Description);
+                json.WriteEndObject();
+                json.Flush();
+                return Encoding.UTF8.GetString(stream.ToArray());
+            }
+
+        }
+    }
+}
