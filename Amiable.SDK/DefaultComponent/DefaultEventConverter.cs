@@ -11,7 +11,7 @@ namespace Amiable.SDK.DefaultComponent
 {
     public class DefaultEventConverter : IEventConverter
     {
-        enum XQEventType
+        public enum CommonEventType
         {
             None = -1,
             OnlineTmp = 0,
@@ -60,7 +60,9 @@ namespace Amiable.SDK.DefaultComponent
 
         class EventTypeAndSub
         {
-            public int type; public int subtype; public AmiableEventType AmiableEventType;
+            public int type; 
+            public int subtype; 
+            public AmiableEventType AmiableEventType;
 
             public EventTypeAndSub(int type, int subtype, AmiableEventType amiableEventType)
             {
@@ -72,11 +74,11 @@ namespace Amiable.SDK.DefaultComponent
 
         Dictionary<int, EventTypeAndSub> dic = new()
         {
-            { (int)XQEventType.Friend, new((int)EventType.MESSAGE, (int)MessageEventSubType.FRIEND, AmiableEventType.Private) },
+            { (int)CommonEventType.Friend, new((int)EventType.MESSAGE, (int)MessageEventSubType.FRIEND, AmiableEventType.Private) },
 
-            { (int)XQEventType.Group, new((int)EventType.MESSAGE, (int)MessageEventSubType.NORMAL, AmiableEventType.Group) },
+            { (int)CommonEventType.Group, new((int)EventType.MESSAGE, (int)MessageEventSubType.NORMAL, AmiableEventType.Group ) },
 
-            { (int)XQEventType.GroupTmp, new((int)EventType.MESSAGE, (int)MessageEventSubType.GROUP, AmiableEventType.Private) }
+            { (int)CommonEventType.GroupTmp, new((int)EventType.MESSAGE, (int)MessageEventSubType.GROUP, AmiableEventType.Private) }
 
 
         };
@@ -105,6 +107,21 @@ namespace Amiable.SDK.DefaultComponent
             {
                 throw new Exception("暂不支持的事件");
             }
+        }
+
+        public MessageEventType GetMessageEventType(int eventType, int subType)
+        {
+            var eventtype = Convert(eventType, subType);
+            return (AmiableEventType)eventType switch
+            {
+                AmiableEventType.Private=>MessageEventType.PRIVATE,
+                AmiableEventType.Group =>MessageEventType.GROUP
+            };
+        }
+
+        public MessageEventSubType GetMessageEventSubType(int eventType, int subType)
+        {
+            return MessageEventSubType.NORMAL;
         }
     }
 }

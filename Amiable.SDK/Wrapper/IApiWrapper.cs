@@ -24,7 +24,7 @@ namespace Amiable.SDK.Wrapper
         /// 将rawData传递进API实现操作
         /// </summary>
         /// <param name="data"></param>
-        public void SetData(EventRawData data);
+        public void SetData(AmiableEventArgs data);
 
         /// <summary>
         /// 向指定群发送消息

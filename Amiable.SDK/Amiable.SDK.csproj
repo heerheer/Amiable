@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppInfo.cs" />
     <Compile Include="AppService.cs" />
     <Compile Include="DefaultComponent\DefaultEventConverter.cs" />
     <Compile Include="Enum\AmiableEventType.cs" />

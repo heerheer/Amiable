@@ -33,14 +33,11 @@ namespace Amiable.SDK
         /// </summary>
         /// <typeparam name="T"></typeparam>
         public void SetEventConverter<T>() where T : IEventConverter, new() => EventConverter = new T();
-    }
 
-    public class AppInfo
-    {
-        public string Name { get; set; }
-        public string Version { get; set; }
-        public string Author { get; set; }
-        public string Description { get; set; }
+        public void Log(params object[] args)
+        {
+            File.AppendAllText($"{AppInfo?.Name ?? "Amiable"}.log", $"{string.Join("",args)}\n");
+        }
     }
 
 

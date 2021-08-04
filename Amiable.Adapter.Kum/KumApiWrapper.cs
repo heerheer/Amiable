@@ -8,9 +8,10 @@ namespace Amiable.Adapter.XQ
     /// <summary>
     /// 对XQAPI的包装实现
     /// </summary>
-    public class XQApiWrapper : IApiWrapper
+    public class KumApiWrapper : IApiWrapper
     {
         private static byte[] AuthId;
+
         public string RobotQQ { get; set; }
 
         void SetAuthID(int id, int addr)
@@ -71,23 +72,24 @@ namespace Amiable.Adapter.XQ
 
         public void OutPutLog(string message)
         {
-            XQDLL.OutPutLog(AuthId,message);
+            KumDll.OutPutLog(AuthId,message);
         }
 
         public void SendGroupMessage(string group, string msg)
         {
-            XQDLL.SendMsgEX(AuthId,RobotQQ,2,group,"",msg,0,false);
-        }
-
-        public void SendPrivateMessage(string qq, string msg)
-        {
-            XQDLL.SendMsgEX(AuthId, RobotQQ,1, "", qq, msg, 0, false);
+            KumDll.SendMsgEX(AuthId,RobotQQ,2,group,"",msg,0,false);
         }
 
         public string SendPraise(string qq)
         {
             throw new NotImplementedException();
         }
+
+        public void SendPrivateMessage(string qq, string msg)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool SignIn(string group, string address, string message)
         {
             throw new NotImplementedException();

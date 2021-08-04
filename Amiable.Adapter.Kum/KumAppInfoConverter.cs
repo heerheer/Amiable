@@ -9,7 +9,7 @@ namespace Amiable.Adapter.XQ
     /// <summary>
     /// 允许将AppInfo转换为先驱可用的Json
     /// </summary>
-    public class XQAppInfoConverter : IAppInfoConverter
+    public class KumAppInfoConverter : IAppInfoConverter
     {
 
         public string Convert(AppInfo info)
@@ -21,13 +21,14 @@ namespace Amiable.Adapter.XQ
                     Indented = true,
                     Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
                 };
-                System.Text.Json.Utf8JsonWriter json = new(stream, options);
+                Utf8JsonWriter json = new Utf8JsonWriter(stream, options);
                 json.WriteStartObject();
                 json.WriteString("name", info.Name);
-                json.WriteString("pver", info.Version);
-                json.WriteNumber("sver", 3);
+                json.WriteString("version", info.Version);
+                json.WriteString("sdk","v2");
                 json.WriteString("author", info.Author);
-                json.WriteString("desc", info.Description);
+                json.WriteString("description", info.Description);
+                json.WriteString("id", info.AppId);
                 json.WriteEndObject();
                 json.Flush();
                 json.Dispose();

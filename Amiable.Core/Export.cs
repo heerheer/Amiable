@@ -10,48 +10,30 @@ using System.Runtime.InteropServices;
 
 namespace Amiable.Core
 {
-    public static class Export
+    public static partial class Export
     {
-
-#if Platform_XQ
-
+        //测试用导出函数，是个菜单
         [DllExport(CallingConvention.StdCall)]
         public static int Test()
         {
-            File.AppendAllText("a.txt", "OK");
-            return 233;
+            return 0;//你是0
         }
 
-        [DllExport(CallingConvention.StdCall)]
-        public static void XQ_AuthId(short id, int IMAddr) => AuthCode(id, IMAddr);
-
-        [DllExport(CallingConvention.StdCall)]
-        public static void XQ_AutoId(short id, int IMAddr) => AuthCode(id, IMAddr);
-
-        public static void AuthCode(short id, int IMAddr)
-        {
-            PreInitEvent(id, IMAddr);
-        }
-
-        [DllExport(CallingConvention.StdCall)]
-        public static string XQ_Create(string frameworkversion) => InitEvent();
-
-        [DllExport(CallingConvention.StdCall)]
-        public static int
-    XQ_Event(string robotQQ, int eventType, int extraType, string from, string fromQQ, string targetQQ, string content, string index, string msgid, string udpmsg, string unix, int p)
-            => PluginEvent(
-                robotQQ, eventType, extraType, from, fromQQ, targetQQ, content, index, msgid, udpmsg, unix, p);
-
-#endif
         /// <summary>
         /// 预加载事件
         /// </summary>
         /// <param name="args"></param>
         private static void PreInitEvent(params object[] args)
         {
-            ///初始化API包装器
-            AmiableService.App.DefaultApiWrapper.Init(args);
-            File.WriteAllLines("log.txt", new[] { "PreInit" });
+            //初始化API包装器
+            try
+            {
+                AmiableService.App.DefaultApiWrapper.Init((short)args[0], (int)args[1]);
+            }
+            catch (Exception ex)
+            {
+                AmiableService.App.Log(ex.ToString());
+            }
         }
 
         /// <summary>
@@ -61,9 +43,18 @@ namespace Amiable.Core
         /// <returns></returns>
         private static string InitEvent(params object[] args)
         {
-            AmiableService.RegEvents();
 
-            return AmiableService.App.GetAppInfoSring();
+            try
+            {
+                AmiableService.RegEvents();
+
+                return AmiableService.App.GetAppInfoSring();
+            }
+            catch (Exception ex)
+            {
+                AmiableService.App.Log(ex.ToString());
+                return "";
+            }
         }
 
         /// <summary>
@@ -75,33 +66,28 @@ namespace Amiable.Core
             //TODO
         }
 
-        private static int PluginEvent(string robotQQ, int eventType, int extraType, string from, string fromQQ, string targetQQ, string content, string index, string msgid, string udpmsg, string unix, int p)
+
+        public static void InvokeEvents(AmiableEventType type, AmiableEventArgs e)
         {
-            //获取Amiable支持的事件类型
-            AmiableEventType a_eventType = AmiableService.App.EventConverter.Convert(eventType, extraType);
-            //获取原始数据
-            var raw = new EventRawData(robotQQ, eventType, extraType, from, fromQQ, targetQQ, content, index, msgid, udpmsg, unix, p);
-            //克隆ApiWrapper
-            IApiWrapper apiWrapper = AmiableService.App.DefaultApiWrapper.Clone() as IApiWrapper;
-
-            //ApiWrapper设置数据,若没实现会没有任何效果。
-            apiWrapper.SetData(raw);
-            //创建EventArgs
-            AmiableEventArgs e = new AmiableEventArgs
+            try
             {
-                EventType = AmiableService.App.EventConverter.GetOnebotEventType(eventType),
-                Robot = long.Parse(robotQQ),
-                Timestamp = DateTime.Now.Ticks,
-                ApiWrapper = apiWrapper,
-                rawData = raw
-            };
+                //克隆ApiWrapper
+                IApiWrapper apiWrapper = AmiableService.App.DefaultApiWrapper.Clone() as IApiWrapper;
 
-            //TODO 返回值
+                apiWrapper.SetData(e);//调用APIWrapper的SetData让Api包装器进行事件内数据变动。
+                                      //例如改变机器人QQ
 
-            //执行所有注册过的事件。
-            AmiableService.Events.FindAll(x => x.EventType == a_eventType).ForEach(x => x.Process(e));
+                e.ApiWrapper = apiWrapper;
 
-            return 0;
+                AmiableService.Events.FindAll(x => x.EventType == type).ForEach(x => x.Process(e));
+            }
+            catch (Exception ex)
+            {
+
+                AmiableService.App.Log($"[事件错误]\n来源:{ex.Source}\n问题:{ex.Message}\nStack{ex.StackTrace}");
+            }
         }
+
+
     }
 }

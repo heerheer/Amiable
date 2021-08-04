@@ -15,5 +15,9 @@ namespace Amiable.SDK.Interface
 
         public EventType GetOnebotEventType(int eventType);
 
+        public MessageEventType GetMessageEventType(int eventType, int subType);
+
+        public MessageEventSubType GetMessageEventSubType(int eventType, int subType);
+
     }
 }

@@ -15,15 +15,34 @@ namespace Amiable.Core
 
         public static List<IPluginEvent> Events = new List<IPluginEvent>();
 
+        //会在Init后注册。
         public static void RegEvents()
         {
+            //这里要让插件成功引用其他的部分。
+            Example.Example.DoNothing();
+
             //注册事件
             //这里很有必要因为Assembly读不了...我也不知道怎么回事
             //Events.Add((IPluginEvent)Activator.CreateInstance<>()));
+
+            //上面那个是.net core开发时候的问题...
+            var ass = AppDomain.CurrentDomain.GetAssemblies();
+            foreach (var item in ass)
+            {
+                var types = item.GetTypes().ToList().Where(s => s != typeof(IPluginEvent) && typeof(IPluginEvent).IsAssignableFrom(s));
+                types.ToList().ForEach(
+                    t =>
+                    {
+                        Events.Add((IPluginEvent)Activator.CreateInstance(t));
+                        AmiableService.App.Log($"事件注册完成{t.Name}");
+                    }
+                    );
+            }
         }
 
         static AmiableService()
         {
+            //初始化
             App = new AppService();
             SetAppInfo();
             ServiceBuilder(App);
@@ -36,7 +55,7 @@ namespace Amiable.Core
         {
             App.AppInfo = new AppInfo
             {
-                Name = "AmiableTestPlugin",
+                Name = "Amiable.Core",
                 Author = "Heer Kaisair",
                 Version = "1.0.0",
                 Description = "Amiable例程插件",

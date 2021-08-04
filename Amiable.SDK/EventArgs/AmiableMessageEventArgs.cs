@@ -10,10 +10,6 @@ namespace Amiable.SDK.EventArgs
 {
     public class AmiableMessageEventArgs : AmiableEventArgs
     {
-        private AmiableMessageEventArgs()
-        {
-
-        }
 
         [JsonPropertyName("message_type")]
         [JsonConverter(typeof(EnumConverter<MessageEventType>))]
@@ -47,7 +43,7 @@ namespace Amiable.SDK.EventArgs
         /// <param name="contents"></param>
         public void SendMessage(params object[] contents)
         {
-            var _contents = string.Join("", contents.ToString());
+            var _contents = string.Join("", contents);
             switch(MessageType)
             {
                 case MessageEventType.GROUP:

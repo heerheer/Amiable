@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amiable.Core", "Amiable.Cor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amiable.Example", "Amiable.Example\Amiable.Example.csproj", "{41342086-6A9D-45CD-9A81-1CC87381D255}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amiable.Adapter.Kum", "Amiable.Adapter.Kum\Amiable.Adapter.Kum.csproj", "{E7C115FD-C0A8-45AD-A527-369C7E4FCCB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,14 @@ Global
 		{41342086-6A9D-45CD-9A81-1CC87381D255}.Release|Any CPU.Build.0 = Release|Any CPU
 		{41342086-6A9D-45CD-9A81-1CC87381D255}.Release|x86.ActiveCfg = Release|Any CPU
 		{41342086-6A9D-45CD-9A81-1CC87381D255}.Release|x86.Build.0 = Release|Any CPU
+		{E7C115FD-C0A8-45AD-A527-369C7E4FCCB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7C115FD-C0A8-45AD-A527-369C7E4FCCB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7C115FD-C0A8-45AD-A527-369C7E4FCCB0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E7C115FD-C0A8-45AD-A527-369C7E4FCCB0}.Debug|x86.Build.0 = Debug|Any CPU
+		{E7C115FD-C0A8-45AD-A527-369C7E4FCCB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7C115FD-C0A8-45AD-A527-369C7E4FCCB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7C115FD-C0A8-45AD-A527-369C7E4FCCB0}.Release|x86.ActiveCfg = Release|Any CPU
+		{E7C115FD-C0A8-45AD-A527-369C7E4FCCB0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
