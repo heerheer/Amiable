@@ -9,26 +9,22 @@ using System.Threading.Tasks;
 
 namespace Amiable.Core
 {
-    public class AmiableService
+    public static class AmiableService
     {
         public static AppService App;
 
-        public static List<IPluginEvent> Events;
+        public static List<IPluginEvent> Events = new List<IPluginEvent>();
 
         public static void RegEvents()
         {
-            var ass = AppDomain.CurrentDomain.GetAssemblies();
-            foreach (var item in ass)
-            {
-                var types = item.GetTypes().ToList().Where(s => s != typeof(IPluginEvent) && typeof(IPluginEvent).IsAssignableFrom(s));
-                types.ToList().ForEach(
-                    t => Events.Add((IPluginEvent)Activator.CreateInstance(t)));
-            }
+            //注册事件
+            //这里很有必要因为Assembly读不了...我也不知道怎么回事
+            //Events.Add((IPluginEvent)Activator.CreateInstance<>()));
         }
 
         static AmiableService()
         {
-            App = new();
+            App = new AppService();
             SetAppInfo();
             ServiceBuilder(App);
         }
@@ -38,7 +34,7 @@ namespace Amiable.Core
         /// </summary>
         public static void SetAppInfo()
         {
-            App.AppInfo = new()
+            App.AppInfo = new AppInfo
             {
                 Name = "AmiableTestPlugin",
                 Author = "Heer Kaisair",

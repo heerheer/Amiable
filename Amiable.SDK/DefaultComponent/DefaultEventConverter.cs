@@ -58,21 +58,32 @@ namespace Amiable.SDK.DefaultComponent
             PluginClicked = 12003,
         }
 
-       record EventTypeAndSub(int type,int subtype,AmiableEventType AmiableEventType);
+        class EventTypeAndSub
+        {
+            public int type; public int subtype; public AmiableEventType AmiableEventType;
 
-        Dictionary<int, EventTypeAndSub> dic = new() {
-            {(int)XQEventType.Friend,new((int)EventType.MESSAGE,(int)MessageEventSubType.FRIEND,AmiableEventType.Private) },
+            public EventTypeAndSub(int type, int subtype, AmiableEventType amiableEventType)
+            {
+                this.type = type;
+                this.subtype = subtype;
+                AmiableEventType = amiableEventType;
+            }
+        }
 
-            {(int)XQEventType.Group,new((int)EventType.MESSAGE,(int)MessageEventSubType.NORMAL, AmiableEventType.Group) },
+        Dictionary<int, EventTypeAndSub> dic = new()
+        {
+            { (int)XQEventType.Friend, new((int)EventType.MESSAGE, (int)MessageEventSubType.FRIEND, AmiableEventType.Private) },
 
-            {(int)XQEventType.GroupTmp,new((int)EventType.MESSAGE,(int)MessageEventSubType.GROUP, AmiableEventType.Private) },
+            { (int)XQEventType.Group, new((int)EventType.MESSAGE, (int)MessageEventSubType.NORMAL, AmiableEventType.Group) },
 
-            {(int)XQEventType.Friend,new((int)EventType.MESSAGE,(int)MessageEventSubType.FRIEND, AmiableEventType.Private) },
+            { (int)XQEventType.GroupTmp, new((int)EventType.MESSAGE, (int)MessageEventSubType.GROUP, AmiableEventType.Private) }
+
+
         };
 
         public AmiableEventType Convert(int eventType, int subType)
         {
-            if(dic.ContainsKey(eventType))
+            if (dic.ContainsKey(eventType))
             {
                 var rec = dic[eventType];
                 return rec.AmiableEventType;

@@ -13,8 +13,8 @@ namespace Amiable.Adapter.XQ
         public static AppService UseXQConfig(this AppService service)
         {
             service.SetAppInfoConverter<XQAppInfoConverter>();
-            service.DefaultApiWrapper = new XQApiWrapper();
             service.SetEventConverter<DefaultEventConverter>();
+            service.DefaultApiWrapper = new XQApiWrapper();
             return service;
         }
     }

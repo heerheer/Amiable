@@ -8,8 +8,6 @@ using Amiable.SDK.Enum;
 
 namespace Amiable.SDK.EventArgs
 {
-    public record EventRawData(string robotQQ, int eventType, int extraType, string from, string fromQQ, string targetQQ, string content, string index, string msgid, string udpmsg, string unix, int p);
-
     /// <summary>
     /// 最基础的事件参数集 遵循OneBot标准
     /// </summary>

@@ -2,6 +2,7 @@
 using Amiable.SDK.Interface;
 using System.IO;
 using System.Text;
+using System.Text.Json;
 
 namespace Amiable.Adapter.XQ
 {
@@ -15,18 +16,22 @@ namespace Amiable.Adapter.XQ
         {
             using (var stream = new MemoryStream())
             {
-                System.Text.Json.Utf8JsonWriter json = new(stream);
+                var options = new JsonWriterOptions
+                {
+                    Indented = true
+                };
+                System.Text.Json.Utf8JsonWriter json = new(stream, options);
                 json.WriteStartObject();
                 json.WriteString("name", info.Name);
                 json.WriteString("pver", info.Version);
                 json.WriteNumber("sver", 3);
-                json.WriteString("author ", info.Author);
-                json.WriteString("desc  ", info.Description);
+                json.WriteString("author", info.Author);
+                json.WriteString("desc", info.Description);
                 json.WriteEndObject();
                 json.Flush();
+                json.Dispose();
                 return Encoding.UTF8.GetString(stream.ToArray());
             }
-
         }
     }
 }

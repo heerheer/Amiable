@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.Json.Serialization;
 using Amiable.SDK.Wrapper;
 using System.IO;
 using Amiable.SDK.Interface;
@@ -25,11 +24,8 @@ namespace Amiable.SDK
         /// </summary>
         /// <typeparam name="T"></typeparam>
         public void SetAppInfoConverter<T>() where T : IAppInfoConverter, new() => appInfoConverter = new T();
-        
-        public string GetAppInfoSring()
-        {
-            return appInfoConverter?.Convert(this.AppInfo);
-        }
+
+        public string GetAppInfoSring() => appInfoConverter.Convert(AppInfo);
 
         /// <summary>
         /// 设置将框架事件代码转换为Amiable事件
@@ -45,7 +41,6 @@ namespace Amiable.SDK
         public string Version { get; set; }
         public string Author { get; set; }
         public string Description { get; set; }
-
     }
 
 
