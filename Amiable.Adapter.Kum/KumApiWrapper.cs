@@ -10,14 +10,30 @@ namespace Amiable.Adapter.XQ
     /// </summary>
     public class KumApiWrapper : IApiWrapper
     {
-        private static byte[] AuthId;
-
-        public string RobotQQ { get; set; }
-
-        void SetAuthID(int id, int addr)
+        public void SendGroupMessage(string group, string msg)
         {
-            AuthId = BitConverter.GetBytes(id).Concat(BitConverter.GetBytes(addr)).ToArray();
+            KumDll.SendGroupMessage(group,msg);
         }
+        public void SendPrivateMessage(string qq, string msg)
+        {
+            KumDll.SendPrivateMessage(qq, msg);
+        }
+
+        public void OutPutLog(string message)
+        {
+            KumDll.OutPutLog(message, 0);
+        }
+
+        public void Init(params object[] args)
+        {
+            
+        }
+
+        public void SetData(AmiableEventArgs data)
+        {
+            //RobotQQ = data.Robot.ToString();
+        }
+        //下面都是默认不去实现的。
 
         public string GetFriendsRemark(string qq)
         {
@@ -59,25 +75,10 @@ namespace Amiable.Adapter.XQ
             throw new NotImplementedException();
         }
 
-        public void Init(params object[] args)
-        {
-            SetAuthID((short)args[0], (int)args[1]);
-            //初始化AuthID
-        }
 
         public bool IsOnline(string qq)
         {
             throw new NotImplementedException();
-        }
-
-        public void OutPutLog(string message)
-        {
-            KumDll.OutPutLog(AuthId,message);
-        }
-
-        public void SendGroupMessage(string group, string msg)
-        {
-            KumDll.SendMsgEX(AuthId,RobotQQ,2,group,"",msg,0,false);
         }
 
         public string SendPraise(string qq)
@@ -85,10 +86,6 @@ namespace Amiable.Adapter.XQ
             throw new NotImplementedException();
         }
 
-        public void SendPrivateMessage(string qq, string msg)
-        {
-            throw new NotImplementedException();
-        }
 
         public bool SignIn(string group, string address, string message)
         {
@@ -100,10 +97,6 @@ namespace Amiable.Adapter.XQ
             throw new NotImplementedException();
         }
 
-        public void SetData(AmiableEventArgs data)
-        {
-            RobotQQ = data.Robot.ToString();
-        }
 
         public object Clone()
         {

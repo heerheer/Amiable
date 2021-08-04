@@ -3,6 +3,7 @@
 using Amiable.SDK.Enum;
 using Amiable.SDK.EventArgs;
 using Amiable.SDK.Wrapper;
+using HuajiTech.UnmanagedExports;
 using System;
 using System.IO;
 using System.Reflection;
@@ -13,7 +14,7 @@ namespace Amiable.Core
     public static partial class Export
     {
         //测试用导出函数，是个菜单
-        [DllExport(CallingConvention.StdCall)]
+        [DllExport]
         public static int Test()
         {
             return 0;//你是0

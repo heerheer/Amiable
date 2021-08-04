@@ -33,8 +33,13 @@ namespace Amiable.Core
                 types.ToList().ForEach(
                     t =>
                     {
-                        Events.Add((IPluginEvent)Activator.CreateInstance(t));
-                        AmiableService.App.Log($"事件注册完成{t.Name}");
+                        if(!Events.Exists(x=>x.GetType() == t))
+                        {
+                            Events.Add((IPluginEvent)Activator.CreateInstance(t));
+                            AmiableService.App.Log($"事件注册完成{t.Name}");
+
+                        }
+                            
                     }
                     );
             }
@@ -69,7 +74,7 @@ namespace Amiable.Core
         public static void ServiceBuilder(AppService service)
         {
             //使用先驱配置
-            service.UseXQConfig();
+            service.UseKumConfig();
         }
     }
 }

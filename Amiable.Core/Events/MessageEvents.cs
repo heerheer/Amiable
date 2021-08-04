@@ -63,6 +63,7 @@ namespace Amiable.Core
         public static void Event_GroupMessage(AmiableMessageEventArgs eventArgs)
         {
             AmiableEventType amiableEventType = AmiableEventType.Group;
+
             InvokeEvents(amiableEventType, eventArgs);
         }
 

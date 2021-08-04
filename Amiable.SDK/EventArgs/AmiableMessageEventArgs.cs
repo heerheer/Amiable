@@ -16,7 +16,7 @@ namespace Amiable.SDK.EventArgs
         public MessageEventType MessageType { get; set; }
 
         [JsonPropertyName("sub_type")]
-        [JsonConverter(typeof(MessageEventSubType))]
+        [JsonConverter(typeof(EnumConverter<MessageEventSubType>))]
         public MessageEventSubType SubType { get; set; }
 
         [JsonPropertyName("message_id")]
