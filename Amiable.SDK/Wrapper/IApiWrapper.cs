@@ -15,6 +15,12 @@ namespace Amiable.SDK.Wrapper
     public interface IApiWrapper:ICloneable
     {
         /// <summary>
+        /// 传入AppName来获取插件目录
+        /// </summary>
+        /// <param name="AppName"></param>
+        /// <returns></returns>
+        public string GetAppDirectory(string AppName);
+        /// <summary>
         /// ApiWrapper初始化方法，会在Create事件之前唤起
         /// </summary>
         /// <param name="args"></param>

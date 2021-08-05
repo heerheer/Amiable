@@ -35,7 +35,7 @@ namespace Amiable.Core
         public static void Event_PrivateMessage(AmiableMessageEventArgs eventArgs)
         {
             AmiableEventType amiableEventType = AmiableEventType.Private;
-
+            
             InvokeEvents(amiableEventType, eventArgs);
         }
 

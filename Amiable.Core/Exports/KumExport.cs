@@ -17,9 +17,6 @@ namespace Amiable.Core
         {
             try
             {
-                AmiableService.App.Log("触发群聊事件");
-
-                AmiableService.App.Log(raw);
                 var e = JsonSerializer.Deserialize<AmiableMessageEventArgs>(raw);
                 Event_GroupMessage(e);//触发标准事件
 

@@ -1,0 +1,9 @@
+{
+    "open": "Amiable.Core.XQ.dll",
+    "bits": 32,
+    "rename": {
+        "Kum_PrivateMsg_AAAAAAAAAAAAAA": "消息_事件_收到私聊消息",
+        "Kum_AppInfo_AAAAAAAAAAAAAA": "插件信息",
+        "Kum_GroupMsg_AAAAAAAAAAAAAA": "消息_事件_收到群聊消息"
+    }
+}

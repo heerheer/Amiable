@@ -1,6 +1,7 @@
 ﻿using Amiable.SDK.EventArgs;
 using Amiable.SDK.Wrapper;
 using System;
+using System.IO;
 using System.Linq;
 
 namespace Amiable.Adapter.XQ
@@ -98,14 +99,26 @@ namespace Amiable.Adapter.XQ
             throw new NotImplementedException();
         }
 
-        public void SetData(AmiableEventArgs data)
-        {
-            RobotQQ = data.Robot.ToString();
-        }
+
 
         public object Clone()
         {
             return base.MemberwiseClone();
+        }
+
+        public string GetAppDirectory(string AppName)
+        {
+            var dir = Path.Combine(Directory.GetCurrentDirectory(), "Config", AppName);
+            if(Directory.Exists(dir) is false)
+            {
+                Directory.CreateDirectory(dir);
+            }
+            return dir;
+        }
+
+        public void SetData(AmiableEventArgs data)
+        {
+            RobotQQ = data.Robot.ToString();
         }
     }
 }
