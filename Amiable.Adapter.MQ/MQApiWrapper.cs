@@ -1,27 +1,31 @@
 ﻿using Amiable.SDK.EventArgs;
 using Amiable.SDK.Wrapper;
 using System;
+using System.IO;
 using System.Linq;
 
-namespace Amiable.Adapter.Kum
+namespace Amiable.Adapter.MQ
 {
     /// <summary>
-    /// 对KumAPI的包装实现
+    /// 对MQAPI的包装实现
     /// </summary>
-    public class KumApiWrapper : IApiWrapper
+    public class MQApiWrapper : IApiWrapper
     {
+
+        private string RobotQQ;
+
         public void SendGroupMessage(string group, string msg)
         {
-            KumDll.SendGroupMessage(group,msg);
+            MQDLL.Api_SendMsgEx(RobotQQ,0,2,group,string.Empty, msg,0);
         }
         public void SendPrivateMessage(string qq, string msg)
         {
-            KumDll.SendPrivateMessage(qq, msg);
+            MQDLL.Api_SendMsgEx(RobotQQ,0,1,string.Empty, qq , msg,0);
         }
 
         public void OutPutLog(string message)
         {
-            KumDll.OutPutLog(message, 0);
+            MQDLL.Api_OutPutLog(message);
         }
 
         public void Init(params object[] args)
@@ -31,7 +35,7 @@ namespace Amiable.Adapter.Kum
 
         public void SetData(AmiableEventArgs data)
         {
-            //RobotQQ = data.Robot.ToString();
+            RobotQQ = data.Robot.ToString();
         }
         //下面都是默认不去实现的。
 
@@ -105,7 +109,12 @@ namespace Amiable.Adapter.Kum
 
         public string GetAppDirectory(string AppName)
         {
-            throw new NotImplementedException();
+            var dir = Path.Combine(Directory.GetCurrentDirectory(), "config", AppName);
+            if (Directory.Exists(dir) is false)
+            {
+                Directory.CreateDirectory(dir);
+            }
+            return dir;
         }
     }
 }

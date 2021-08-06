@@ -27,6 +27,14 @@ namespace Amiable.SDK.Enum
        /// <summary>
        /// 添加群请求
        /// </summary>
-       AddGroup
+       AddGroup,
+        /// <summary>
+        /// 插件被启用
+        /// </summary>
+       PluginEnable,
+      /// <summary>
+      /// 插件被载入
+      /// </summary>
+       PluginLoaded,
     }
 }

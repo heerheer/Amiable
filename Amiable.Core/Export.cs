@@ -68,6 +68,11 @@ namespace Amiable.Core
         }
 
 
+        /// <summary>
+        /// 触发一个事件
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="e"></param>
         public static void InvokeEvents(AmiableEventType type, AmiableEventArgs e)
         {
             try
@@ -89,6 +94,15 @@ namespace Amiable.Core
             }
         }
 
+        private static AmiableEventArgs GetAmiableEventArgs(long timestamp,long robot,EventType eventType)
+        {
+            return new AmiableEventArgs
+            {
+                Timestamp = timestamp,
+                Robot = robot,
+                EventType = eventType
+            };
+        }
 
     }
 }

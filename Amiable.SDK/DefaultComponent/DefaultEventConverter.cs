@@ -54,7 +54,8 @@ namespace Amiable.SDK.DefaultComponent
             GroupNameChanged = 220,
             BeRefusedGroup = 221,
             QQLogin = 1101,
-            PluginEnable = 12000,
+            PluginLoaded = 12000,
+            PluginEnable = 12001,
             PluginClicked = 12003,
         }
 

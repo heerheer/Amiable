@@ -99,8 +99,6 @@ namespace Amiable.Adapter.XQ
             throw new NotImplementedException();
         }
 
-
-
         public object Clone()
         {
             return base.MemberwiseClone();

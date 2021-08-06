@@ -13,10 +13,9 @@ namespace Amiable.Core
     public static partial class Export
     {
 
+        
         public static void Event_PrivateMessage(long time, long self_id, string sub_type, int msg_id, long user_id, string message, int font, object sender_info)
         {
-            AmiableEventType amiableEventType = AmiableEventType.Private;
-
             AmiableMessageEventArgs eventArgs = new AmiableMessageEventArgs
             {
                 EventType = EventType.MESSAGE,
@@ -32,6 +31,7 @@ namespace Amiable.Core
 
             Event_PrivateMessage(eventArgs);
         }
+
         public static void Event_PrivateMessage(AmiableMessageEventArgs eventArgs)
         {
             AmiableEventType amiableEventType = AmiableEventType.Private;
@@ -42,7 +42,7 @@ namespace Amiable.Core
         public static void Event_GroupMessage(long time, long self_id, string sub_type, int msg_id, long group_id, long user_id, string message, int font, object sender_info)
         {
 
-            Amiable.SDK.EventArgs.AmiableMessageEventArgs eventArgs = new SDK.EventArgs.AmiableMessageEventArgs
+           AmiableMessageEventArgs eventArgs = new AmiableMessageEventArgs
             {
                 EventType = EventType.MESSAGE,
                 MessageType = MessageEventType.GROUP,

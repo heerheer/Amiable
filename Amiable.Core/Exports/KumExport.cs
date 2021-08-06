@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Amiable.Core
 {
-#if Platform_Kum
+#if Platform_Kum || DEBUG
     public static partial class Export
     {
         [DllExport]//消息_事件_收到群聊消息
@@ -21,7 +21,7 @@ namespace Amiable.Core
                 Event_GroupMessage(e);//触发标准事件
 
             }
-            catch (Exception ex )
+            catch (Exception ex)
             {
                 AmiableService.App.Log(ex.ToString());
 
@@ -32,10 +32,24 @@ namespace Amiable.Core
         [DllExport]//消息_事件_收到私聊消息
         public static int Kum_PrivateMsg_AAAAAAAAAAAAAA(string self_id, string sub_type, string temp_from, string msg_id, string sender_id, string msg, string sender_info, string raw)
         {
+            try
+            {
+                var e = JsonSerializer.Deserialize<AmiableMessageEventArgs>(raw);
+                Event_PrivateMessage(e);//触发标准事件
+            }
+            catch (Exception ex)
+            {
 
-            AmiableService.App.Log(raw);
-            var e = JsonSerializer.Deserialize<AmiableMessageEventArgs>(raw);
-            Event_PrivateMessage(e);//触发标准事件
+                AmiableService.App.Log(ex.ToString());
+            }
+            return 0;
+        }
+
+        [DllExport]//插件启用
+        public static int Kum_Enable_AAAAAAAAAAAAAA()
+        {
+            Event_PluginEnable(GetAmiableEventArgs(DateTime.Now.Ticks, 0, SDK.Enum.EventType.META_EVENT));
+
             return 0;
         }
 

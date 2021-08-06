@@ -30,23 +30,14 @@ namespace Amiable.SDK.EventArgs
 
         public IEventConverter converter;
 
-        public AmiableMessageEventArgs AsMessageEventArgs()
-        {
-            //TODO 转化为另一种e
-            var e = new AmiableMessageEventArgs
-            {
-                Timestamp = Timestamp,
-                Robot = Robot,
-                EventType = EventType,
-                ApiWrapper = ApiWrapper,
-                rawData = rawData,
-                RawMessage = rawData.Content,
-                Sender = rawData.FromQQ,
-                MessageType = converter.GetMessageEventType(rawData.EventType,rawData.SubType),
-                GroupId = long.Parse(rawData.From),
-                MessageId =int.Parse(rawData.MsgId)
-            };
-            return e;
-        }
+        public AppInfo AppInfo;
+
+        public AmiableMessageEventArgs AsMessageEventArgs() => this as AmiableMessageEventArgs;
+
+        /// <summary>
+        /// 使用AppId作为关键文件夹得到配置目录
+        /// </summary>
+        public string AppDirectory => ApiWrapper.GetAppDirectory(AppInfo.AppId);
+
     }
 }

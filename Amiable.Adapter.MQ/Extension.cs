@@ -1,7 +1,12 @@
 ﻿using Amiable.SDK;
 using Amiable.SDK.DefaultComponent;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Amiable.Adapter.Kum
+namespace Amiable.Adapter.MQ
 {
     public static class Extension
     {
@@ -10,11 +15,11 @@ namespace Amiable.Adapter.Kum
         /// </summary>
         /// <param name="service"></param>
         /// <returns></returns>
-        public static AppService UseKumConfig(this AppService service)
+        public static AppService UseMQConfig(this AppService service)
         {
-            service.SetAppInfoConverter<KumAppInfoConverter>();
+            service.SetAppInfoConverter<MQAppInfoConverter>();
             service.SetEventConverter<DefaultEventConverter>();
-            service.DefaultApiWrapper = new KumApiWrapper();
+            service.DefaultApiWrapper = new MQApiWrapper();
             return service;
         }
     }

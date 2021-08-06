@@ -16,8 +16,8 @@ namespace Amiable.Example
 
         public void Process(AmiableEventArgs _e)
         {
-            
-            IniObject dataini = new IniObject(_e. + "data.ini");
+            AmiableMessageEventArgs e = _e as AmiableMessageEventArgs;
+            IniObject dataini = new IniObject(e.ApiWrapper.GetAppDirectory() + "data.ini");
             IniObject qini = new IniObject(e.XQAPI.AppDirectory + "签.ini");
             dataini.Load();
             qini.Load();

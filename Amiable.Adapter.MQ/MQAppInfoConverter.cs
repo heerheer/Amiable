@@ -4,12 +4,12 @@ using System.IO;
 using System.Text;
 using System.Text.Json;
 
-namespace Amiable.Adapter.Kum
+namespace Amiable.Adapter.MQ
 {
     /// <summary>
-    /// 允许将AppInfo转换为Kum可用的Json
+    /// 允许将AppInfo转换为MQ可用的Json
     /// </summary>
-    public class KumAppInfoConverter : IAppInfoConverter
+    public class MQAppInfoConverter : IAppInfoConverter
     {
 
         public string Convert(AppInfo info)
@@ -21,14 +21,14 @@ namespace Amiable.Adapter.Kum
                     Indented = true,
                     Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
                 };
-                Utf8JsonWriter json = new Utf8JsonWriter(stream, options);
+                System.Text.Json.Utf8JsonWriter json = new Utf8JsonWriter(stream, options);
                 json.WriteStartObject();
                 json.WriteString("name", info.Name);
                 json.WriteString("version", info.Version);
-                json.WriteString("sdk", "v2");
+                json.WriteString("skey", "SDG5D4Ys89h7DJ849d");
                 json.WriteString("author", info.Author);
                 json.WriteString("description", info.Description);
-                json.WriteString("id", info.AppId);
+                json.WriteString("sdk", "S1");
                 json.WriteEndObject();
                 json.Flush();
                 json.Dispose();

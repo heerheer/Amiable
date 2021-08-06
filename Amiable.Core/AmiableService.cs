@@ -1,4 +1,4 @@
-﻿using Amiable.Adapter.XQ;
+﻿using Amiable.Adapter.Kum;
 using Amiable.SDK;
 using Amiable.SDK.Interface;
 using System;

@@ -65,6 +65,7 @@
     <Compile Include="DefaultComponent\DefaultEventConverter.cs" />
     <Compile Include="Enum\AmiableEventType.cs" />
     <Compile Include="Enum\EnumConverter.cs" />
+    <Compile Include="Enum\EventHandleResult.cs" />
     <Compile Include="Enum\EventType.cs" />
     <Compile Include="EventArgs\AmiableEventArgs.cs" />
     <Compile Include="EventArgs\AmiableMessageEventArgs.cs" />
