@@ -47,7 +47,6 @@ namespace Amiable.Core
 
             try
             {
-
                 return AmiableService.App.GetAppInfoSring();
             }
             catch (Exception ex)

@@ -6,6 +6,11 @@ using System.Text;
 
 namespace Amiable.Adapter.MQ
 {
+
+    /*
+     此SDK为早些版本，MyQQ框架已更新数次，故API仅罗列部分，仅供参考，如有需要请自行修改或者新增
+     */
+
     internal static class MQDLL
     {
         private const string DllName = "MyQQApi.dll";

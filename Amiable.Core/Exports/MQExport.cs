@@ -14,7 +14,11 @@ namespace Amiable.Core
 #if Platform_MQ || DEBUG
 
         [DllExport]
-        public static int MQ_End() => 0;
+        public static int MQ_End()
+        {
+            
+            return 0;
+        }
 
         [DllExport]
         public static int MQ_Message() => 0;
@@ -30,7 +34,7 @@ namespace Amiable.Core
             MQ_Event(string robotQQ, int eventType, int extraType, string from, string fromQQ, string targetQQ, string content, string index, string msgid, string udpmsg, string unix, int p)
         {
             return XX_Event(robotQQ, eventType, extraType, from, fromQQ, targetQQ, content, index, msgid, udpmsg, unix, p);
-
+           
         }
 
 #endif

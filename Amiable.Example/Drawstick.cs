@@ -14,7 +14,7 @@ namespace Amiable.Example
 {
     public class EventEnable : IPluginEvent
     {
-        public AmiableEventType EventType => AmiableEventType.PluginEnable;
+        public AmiableEventType EventType => AmiableEventType.Error;
 
         public void Process(AmiableEventArgs e)
         {
