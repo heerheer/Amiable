@@ -47,7 +47,6 @@ namespace Amiable.Core
 
             try
             {
-                AmiableService.RegEvents();
 
                 return AmiableService.App.GetAppInfoSring();
             }
@@ -85,7 +84,17 @@ namespace Amiable.Core
 
                 e.ApiWrapper = apiWrapper;
 
-                AmiableService.Events.FindAll(x => x.EventType == type).ForEach(x => x.Process(e));
+                e.AppInfo = AmiableService.App.AppInfo;
+
+                AmiableService.App.Log($"[触发事件]{type}");
+
+                AmiableService.Events.FindAll(x => x.EventType == type).ForEach(x =>
+                {
+                    x.Process(e);
+                }
+
+                );
+                AmiableService.App.Log($"[触发事件]{type}结束");
             }
             catch (Exception ex)
             {
@@ -94,7 +103,7 @@ namespace Amiable.Core
             }
         }
 
-        private static AmiableEventArgs GetAmiableEventArgs(long timestamp,long robot,EventType eventType)
+        private static AmiableEventArgs GetAmiableEventArgs(long timestamp, long robot, EventType eventType)
         {
             return new AmiableEventArgs
             {

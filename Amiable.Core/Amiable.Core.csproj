@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Amiable.Core</RootNamespace>
-    <AssemblyName>Amiable.Core.All</AssemblyName>
+    <AssemblyName>Amiable.Core.MQ</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -66,7 +66,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Build|x86'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x86\Build\</OutputPath>
-    <DefineConstants>TRACE;Platform_Kum</DefineConstants>
+    <DefineConstants>TRACE;Platform_MQ</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <LangVersion>7.3</LangVersion>
@@ -135,6 +135,10 @@
     <ProjectReference Include="..\Amiable.Adapter.Kum\Amiable.Adapter.Kum.csproj">
       <Project>{e7c115fd-c0a8-45ad-a527-369c7e4fccb0}</Project>
       <Name>Amiable.Adapter.Kum</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Amiable.Adapter.MQ\Amiable.Adapter.MQ.csproj">
+      <Project>{589da853-efcb-4715-85fc-1caf7d72c049}</Project>
+      <Name>Amiable.Adapter.MQ</Name>
     </ProjectReference>
     <ProjectReference Include="..\Amiable.Adapter.XQ\Amiable.Adapter.XQ.csproj">
       <Project>{ec265bda-77d4-497f-a4a5-d44231c29897}</Project>

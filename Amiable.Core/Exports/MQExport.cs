@@ -23,7 +23,7 @@ namespace Amiable.Core
         public static void MQ_Set() { }
 
         [DllExport]
-        public static string MQ_Info(string frameworkversion) => InitEvent();
+        public static string MQ_Info() => InitEvent();
 
         [DllExport]
         public static int

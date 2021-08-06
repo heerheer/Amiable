@@ -1,4 +1,5 @@
 ﻿using Amiable.Adapter.Kum;
+using Amiable.Adapter.MQ;
 using Amiable.SDK;
 using Amiable.SDK.Interface;
 using System;
@@ -37,9 +38,7 @@ namespace Amiable.Core
                         {
                             Events.Add((IPluginEvent)Activator.CreateInstance(t));
                             AmiableService.App.Log($"事件注册完成{t.Name}");
-
-                        }
-                            
+                        }      
                     }
                     );
             }
@@ -51,6 +50,7 @@ namespace Amiable.Core
             App = new AppService();
             SetAppInfo();
             ServiceBuilder(App);
+            RegEvents();//注册所有事件?防止出问题
         }
 
         /// <summary>
@@ -64,6 +64,7 @@ namespace Amiable.Core
                 Author = "Heer Kaisair",
                 Version = "1.0.0",
                 Description = "Amiable例程插件",
+                AppId="top.amiable.example"
             };
         }
 
@@ -74,7 +75,7 @@ namespace Amiable.Core
         public static void ServiceBuilder(AppService service)
         {
             //使用先驱配置
-            service.UseKumConfig();
+            service.UseMQConfig();
         }
     }
 }
