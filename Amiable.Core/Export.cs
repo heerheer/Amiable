@@ -92,6 +92,7 @@ namespace Amiable.Core
                     x.Process(e);
                 }
 
+
                 );
                 AmiableService.App.Log($"[触发事件]{type}结束");
             }

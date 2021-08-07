@@ -74,7 +74,7 @@ namespace Amiable.Core
         /// <param name="service"></param>
         public static void ServiceBuilder(AppService service)
         {
-            //使用先驱配置
+           
             service.UseMQConfig();
         }
     }

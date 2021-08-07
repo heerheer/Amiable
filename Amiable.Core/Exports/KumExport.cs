@@ -18,7 +18,7 @@ namespace Amiable.Core
             try
             {
                 var e = JsonSerializer.Deserialize<AmiableMessageEventArgs>(raw);
-                Event_GroupMessage(e);//触发标准事件
+                return Event_GroupMessage(e);//触发标准事件
 
             }
             catch (Exception ex)
@@ -35,7 +35,7 @@ namespace Amiable.Core
             try
             {
                 var e = JsonSerializer.Deserialize<AmiableMessageEventArgs>(raw);
-                Event_PrivateMessage(e);//触发标准事件
+                return Event_PrivateMessage(e);//触发标准事件
             }
             catch (Exception ex)
             {

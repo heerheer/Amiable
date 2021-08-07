@@ -36,6 +36,8 @@ namespace Amiable.Example
                 e.SendMessage(sb.ToString());
             }
 
+            
+
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Amiable.Core
     {
 
         
-        public static void Event_PrivateMessage(long time, long self_id, string sub_type, int msg_id, long user_id, string message, int font, object sender_info)
+        public static int Event_PrivateMessage(long time, long self_id, string sub_type, int msg_id, long user_id, string message, int font, object sender_info)
         {
             AmiableMessageEventArgs eventArgs = new AmiableMessageEventArgs
             {
@@ -29,17 +29,18 @@ namespace Amiable.Core
                 Sender = sender_info,
             };
 
-            Event_PrivateMessage(eventArgs);
+            return Event_PrivateMessage(eventArgs);
         }
 
-        public static void Event_PrivateMessage(AmiableMessageEventArgs eventArgs)
+        public static int Event_PrivateMessage(AmiableMessageEventArgs eventArgs)
         {
             AmiableEventType amiableEventType = AmiableEventType.Private;
             
             InvokeEvents(amiableEventType, eventArgs);
+            return (int)eventArgs.HandleResult;
         }
 
-        public static void Event_GroupMessage(long time, long self_id, string sub_type, int msg_id, long group_id, long user_id, string message, int font, object sender_info)
+        public static int Event_GroupMessage(long time, long self_id, string sub_type, int msg_id, long group_id, long user_id, string message, int font, object sender_info)
         {
 
            AmiableMessageEventArgs eventArgs = new AmiableMessageEventArgs
@@ -56,15 +57,17 @@ namespace Amiable.Core
                 Sender = sender_info,
             };
 
-            Event_GroupMessage(eventArgs);
+            return Event_GroupMessage(eventArgs);
 
         }
 
-        public static void Event_GroupMessage(AmiableMessageEventArgs eventArgs)
+        public static int Event_GroupMessage(AmiableMessageEventArgs eventArgs)
         {
             AmiableEventType amiableEventType = AmiableEventType.Group;
 
             InvokeEvents(amiableEventType, eventArgs);
+
+            return (int)eventArgs.HandleResult;
         }
 
 

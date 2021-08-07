@@ -18,11 +18,9 @@ namespace Amiable.Core
                 switch (eventType)
                 {
                     case (int)DefaultEventConverter.CommonEventType.Friend:
-                        Event_PrivateMessage(DateTime.Now.Ticks, long.Parse(robotQQ), "friend", int.Parse(msgid), long.Parse(fromQQ), content, 0, null);
-                        break;
+                        return Event_PrivateMessage(DateTime.Now.Ticks, long.Parse(robotQQ), "friend", int.Parse(msgid), long.Parse(fromQQ), content, 0, null);
                     case (int)DefaultEventConverter.CommonEventType.Group:
-                        Event_GroupMessage(DateTime.Now.Ticks, long.Parse(robotQQ), "normal", int.Parse(msgid), long.Parse(from), long.Parse(fromQQ), content, 0, null);
-                        break;
+                        return Event_GroupMessage(DateTime.Now.Ticks, long.Parse(robotQQ), "normal", int.Parse(msgid), long.Parse(from), long.Parse(fromQQ), content, 0, null);
                     case (int)DefaultEventConverter.CommonEventType.PluginLoaded:
                         Event_PluginLoad(GetAmiableEventArgs(DateTime.Now.Ticks, 0, SDK.Enum.EventType.META_EVENT));
                         break;
