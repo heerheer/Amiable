@@ -47,12 +47,6 @@ namespace Amiable.SDK.EventArgs
         public EventRawData rawData;
 
         /// <summary>
-        /// 事件转换器
-        /// </summary>
-        [Obsolete]
-        public IEventConverter converter;
-
-        /// <summary>
         /// 插件信息
         /// </summary>
         public AppInfo AppInfo;

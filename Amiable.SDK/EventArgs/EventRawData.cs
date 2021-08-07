@@ -1,5 +1,8 @@
-﻿namespace Amiable.SDK.EventArgs
+﻿using System;
+
+namespace Amiable.SDK.EventArgs
 {
+    [Obsolete]
     public class EventRawData
     {
         public EventRawData(string robotQQ, int eventType, int subType, string from, string fromQQ, string targetQQ, string content, string index, string msgId, string udpMsg, string unix, int p)

@@ -25,7 +25,7 @@ namespace Amiable.Adapter.Kum
                 json.WriteStartObject();
                 json.WriteString("name", info.Name);
                 json.WriteString("version", info.Version);
-                json.WriteString("sdk", "v2");
+                json.WriteString("sdk", "Amiable_KumAdapter_v1.0");
                 json.WriteString("author", info.Author);
                 json.WriteString("description", info.Description);
                 json.WriteString("id", info.AppId);

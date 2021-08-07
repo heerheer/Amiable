@@ -12,9 +12,9 @@ using XQ.Net.HIni.Tool;
 
 namespace Amiable.Example
 {
-    public class EventEnable : IPluginEvent
+    public class Draw_A_Stick_EventEnable : IPluginEvent
     {
-        public AmiableEventType EventType => AmiableEventType.Error;
+        public AmiableEventType EventType => AmiableEventType.PluginLoaded;
 
         public void Process(AmiableEventArgs e)
         {
@@ -43,10 +43,11 @@ namespace Amiable.Example
 
             AmiableMessageEventArgs e = _e as AmiableMessageEventArgs;
 
-            if(e.RawMessage is "抽签" or "解签")
+            if(e.RawMessage != "抽签" && e.RawMessage != "解签")
             {
-
+                return;
             }
+
             var data_Path = Path.Combine(e.AppDirectory, "data.ini");
             var stick_Path = Path.Combine(e.AppDirectory, "签.ini");
 
@@ -153,6 +154,8 @@ namespace Amiable.Example
                     e.SendMessage(sb.ToString());
                 }
             }
+
+            e.HandleResult = EventHandleResult.INTERCEPT;
         }
     }
 }

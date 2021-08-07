@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("ReplyBot复读姬")]
+[assembly: AssemblyTitle("Ami.Draw-A-Stick")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Amiable Inc.")]
-[assembly: AssemblyProduct("Amiable.Core")]
-[assembly: AssemblyCopyright("Copyright © Amiable Inc. 2077")]
+[assembly: AssemblyCompany("HP Inc.")]
+[assembly: AssemblyProduct("Ami.Draw-A-Stick")]
+[assembly: AssemblyCopyright("Copyright © HP Inc. 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("930d789a-b5dc-4dc4-b7ab-ae29f6920fd9")]
+[assembly: Guid("6aa4d075-4ebf-4fd5-b308-26eefcdc948d")]
 
 // 程序集的版本信息由下列四个值组成: 
 //

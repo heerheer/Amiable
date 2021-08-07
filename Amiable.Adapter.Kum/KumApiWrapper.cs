@@ -1,6 +1,7 @@
 ﻿using Amiable.SDK.EventArgs;
 using Amiable.SDK.Wrapper;
 using System;
+using System.IO;
 using System.Linq;
 
 namespace Amiable.Adapter.Kum
@@ -10,6 +11,15 @@ namespace Amiable.Adapter.Kum
     /// </summary>
     public class KumApiWrapper : IApiWrapper
     {
+        public string GetAppDirectory(string AppName)
+        {
+            var dir = Path.Combine(Directory.GetCurrentDirectory(), "config", AppName);
+            if (Directory.Exists(dir) is false)
+            {
+                Directory.CreateDirectory(dir);
+            }
+            return dir;
+        }
         public void SendGroupMessage(string group, string msg)
         {
             KumDll.SendGroupMessage(group,msg);
@@ -103,9 +113,5 @@ namespace Amiable.Adapter.Kum
             return base.MemberwiseClone();
         }
 
-        public string GetAppDirectory(string AppName)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

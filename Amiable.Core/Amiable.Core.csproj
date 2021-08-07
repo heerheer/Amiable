@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Amiable.Core</RootNamespace>
-    <AssemblyName>Amiable.Core.MQ</AssemblyName>
+    <AssemblyName>ReplyBot复读姬.MQ</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -132,6 +132,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ami.Draw-A-Stick\Ami.Draw-A-Stick.csproj">
+      <Project>{6aa4d075-4ebf-4fd5-b308-26eefcdc948d}</Project>
+      <Name>Ami.Draw-A-Stick</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ami.ReplyBot\Ami.ReplyBot.csproj">
+      <Project>{67173E14-95DD-4734-9DAA-8E3337A237CB}</Project>
+      <Name>Ami.ReplyBot</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Amiable.Adapter.Kum\Amiable.Adapter.Kum.csproj">
       <Project>{e7c115fd-c0a8-45ad-a527-369c7e4fccb0}</Project>
       <Name>Amiable.Adapter.Kum</Name>

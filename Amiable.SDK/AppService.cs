@@ -11,12 +11,19 @@ namespace Amiable.SDK
 {
     public class AppService
     {
+        /// <summary>
+        /// 将AppInfo转化为框架识别JSON的转换器
+        /// </summary>
         public IAppInfoConverter appInfoConverter;
 
-        public IEventConverter EventConverter = new DefaultComponent.DefaultEventConverter();
-
+        /// <summary>
+        /// 插件信息
+        /// </summary>
         public AppInfo AppInfo;
 
+        /// <summary>
+        /// Api包装器的初始实例
+        /// </summary>
         public IApiWrapper DefaultApiWrapper;
 
         /// <summary>
@@ -28,15 +35,18 @@ namespace Amiable.SDK
         public string GetAppInfoSring() => appInfoConverter.Convert(AppInfo);
 
         /// <summary>
-        /// 设置将框架事件代码转换为Amiable事件
-        /// 默认为先驱提供的事件转换机制
+        /// 以Amiable.Core的方式输出日志文本
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        public void SetEventConverter<T>() where T : IEventConverter, new() => EventConverter = new T();
-
+        /// <param name="args"></param>
         public void Log(params object[] args)
         {
-            File.AppendAllText($"{AppInfo?.Name ?? "Amiable"}.log", $"{string.Join("",args)}\n");
+            var dir = Path.Combine(Directory.GetCurrentDirectory(), "Amiable");
+            if(Directory.Exists(dir) is false)
+            {
+                Directory.CreateDirectory(dir);
+            }
+            var path = Path.Combine(dir, $"{AppInfo?.Name ?? "Amiable"}.{DateTime.Now:yyMMdd}.log");
+            File.AppendAllText(path, $"[{DateTime.Now.ToShortTimeString()}]{string.Join("",args)}\n");
         }
     }
 

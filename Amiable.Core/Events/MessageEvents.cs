@@ -32,6 +32,11 @@ namespace Amiable.Core
             return Event_PrivateMessage(eventArgs);
         }
 
+        /// <summary>
+        /// 以Onebot标准参数触发私聊事件
+        /// </summary>
+        /// <param name="eventArgs"></param>
+        /// <returns></returns>
         public static int Event_PrivateMessage(AmiableMessageEventArgs eventArgs)
         {
             AmiableEventType amiableEventType = AmiableEventType.Private;
@@ -61,6 +66,11 @@ namespace Amiable.Core
 
         }
 
+        /// <summary>
+        /// 以Onebot标准参数触发群聊事件
+        /// </summary>
+        /// <param name="eventArgs"></param>
+        /// <returns></returns>
         public static int Event_GroupMessage(AmiableMessageEventArgs eventArgs)
         {
             AmiableEventType amiableEventType = AmiableEventType.Group;

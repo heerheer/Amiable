@@ -53,6 +53,14 @@ namespace Amiable.Core
             return 0;
         }
 
+        [DllExport]//框架启动
+        public static int Kum_Loaded_AAAAAAAAAAAAAA()
+        {
+            Event_PluginLoad(GetAmiableEventArgs(DateTime.Now.Ticks, 0, SDK.Enum.EventType.META_EVENT));
+
+            return 0;
+        }
+
         [DllExport]//插件信息
         public static string Kum_AppInfo_AAAAAAAAAAAAAA() => InitEvent();
     }

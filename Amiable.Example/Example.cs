@@ -18,7 +18,7 @@ namespace Amiable.Example
         }
     }
 
-    public class A_GroupMsgEvent : IPluginEvent
+    public class Amiable_Test : IPluginEvent
     {
         public AmiableEventType EventType => AmiableEventType.Group;
 
@@ -28,12 +28,14 @@ namespace Amiable.Example
            
             if (e.RawMessage == "#Amiable")
             {
+                e.ApiWrapper.OutPutLog("Amiable发现了你哦~");
                 var sb = new StringBuilder();
                 sb.AppendLine("这是一个由Amiable开发SDK制作的插件");
                 sb.AppendLine("项目地址:https://github.com/heerheer/Amiable");
-                sb.AppendLine("当前开发状态:2%");
+                sb.AppendLine("当前开发状态:10%");
                 sb.AppendLine($"当前使用的API适配器:{e.ApiWrapper.GetType().Name}");
                 e.SendMessage(sb.ToString());
+                e.HandleResult = EventHandleResult.INTERCEPT;
             }
 
             

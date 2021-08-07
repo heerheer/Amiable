@@ -78,23 +78,26 @@ namespace Amiable.Core
                 //克隆ApiWrapper
                 IApiWrapper apiWrapper = AmiableService.App.DefaultApiWrapper.Clone() as IApiWrapper;
 
-                apiWrapper.SetData(e);//调用APIWrapper的SetData让Api包装器进行事件内数据变动。
-                                      //例如改变机器人QQ
+                apiWrapper.SetData(e);
+                //调用APIWrapper的SetData让Api包装器进行事件内数据变动。
+                //例如改变机器人QQ
 
                 e.ApiWrapper = apiWrapper;
 
                 e.AppInfo = AmiableService.App.AppInfo;
 
-                AmiableService.App.Log($"[触发事件]{type}");
+                AmiableService.App.Log($"[事件唤起]{type}");
 
                 AmiableService.Events.FindAll(x => x.EventType == type).ForEach(x =>
                 {
+                    AmiableService.App.Log($"[触发事件]执行实例类型:{x.GetType().Name}");
+
                     x.Process(e);
                 }
 
 
                 );
-                AmiableService.App.Log($"[触发事件]{type}结束");
+                //AmiableService.App.Log($"[触发事件]{type}结束");
             }
             catch (Exception ex)
             {

@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{84A9B9C7-C073-4EAF-A151-75CD2954C44B}</ProjectGuid>
+    <ProjectGuid>{67173E14-95DD-4734-9DAA-8E3337A237CB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Amiable.SDK</RootNamespace>
-    <AssemblyName>Amiable.SDK</AssemblyName>
+    <RootNamespace>Ami.ReplyBot</RootNamespace>
+    <AssemblyName>Ami.ReplyBot</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <LangVersion>9.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,24 +30,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <LangVersion>9.0</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <LangVersion>9.0</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -60,25 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppInfo.cs" />
-    <Compile Include="AppService.cs" />
-    <Compile Include="DefaultComponent\DefaultEventConverter.cs" />
-    <Compile Include="Enum\AmiableEventType.cs" />
-    <Compile Include="Enum\EnumConverter.cs" />
-    <Compile Include="Enum\EventHandleResult.cs" />
-    <Compile Include="Enum\EventType.cs" />
-    <Compile Include="EventArgs\AmiableEventArgs.cs" />
-    <Compile Include="EventArgs\AmiableMessageEventArgs.cs" />
-    <Compile Include="EventArgs\EventRawData.cs" />
-    <Compile Include="Interface\IAppInfoConverter.cs" />
-    <Compile Include="Interface\IPluginEvent.cs" />
+    <Compile Include="ReplyBot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Wrapper\IApiWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="System.Text.Json">
-      <Version>5.0.2</Version>
-    </PackageReference>
+    <ProjectReference Include="..\Amiable.SDK\Amiable.SDK.csproj">
+      <Project>{84a9b9c7-c073-4eaf-a151-75cd2954c44b}</Project>
+      <Name>Amiable.SDK</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

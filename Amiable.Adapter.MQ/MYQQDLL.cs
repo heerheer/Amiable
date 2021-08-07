@@ -18,6 +18,11 @@ namespace Amiable.Adapter.MQ
         [DllImport(DllName, EntryPoint = "Api_SendMsgEx", CharSet = CharSet.Ansi)]
         public static extern IntPtr Api_SendMsgEx(string rotbotQQ,int any ,int type, string group, string qq, string Msg, int bubbleId);
 
+        [DllImport(DllName, EntryPoint = "Api_OutPut", CharSet = CharSet.Ansi)]
+        public static extern IntPtr Api_OutPutLog(string note);
+
+
+
         [DllImport(DllName, EntryPoint = "Api_SendXML", CharSet = CharSet.Ansi)]
         public static extern IntPtr Api_SendXML(string rotbotQQ, int SendType, int type, string group, string qq, string xml, int SubType);
 
@@ -102,8 +107,6 @@ namespace Amiable.Adapter.MQ
         [DllImport(DllName, EntryPoint = "Api_GetPicLink", CharSet = CharSet.Ansi)]
         public static extern IntPtr Api_GetPicLink(string rotbotQQ, int ImgType, string from, string Guid);
 
-        [DllImport(DllName, EntryPoint = "Api_OutPutLog", CharSet = CharSet.Ansi)]
-        public static extern IntPtr Api_OutPutLog(string note);
 
         [DllImport(DllName, EntryPoint = "Api_HandleGroupEvent", CharSet = CharSet.Ansi)]
         public static extern IntPtr Api_HandleGroupEvent(string rotbotQQ, int type, string beqq, string group, string seq, int handle, string note);

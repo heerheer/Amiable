@@ -33,6 +33,16 @@ namespace Amiable.Adapter.MQ
             
         }
 
+        public string GetAppDirectory(string AppName)
+        {
+            var dir = Path.Combine(Directory.GetCurrentDirectory(), "config", AppName);
+            if (Directory.Exists(dir) is false)
+            {
+                Directory.CreateDirectory(dir);
+            }
+            return dir;
+        }
+
         public void SetData(AmiableEventArgs data)
         {
             RobotQQ = data.Robot.ToString();
@@ -107,14 +117,5 @@ namespace Amiable.Adapter.MQ
             return base.MemberwiseClone();
         }
 
-        public string GetAppDirectory(string AppName)
-        {
-            var dir = Path.Combine(Directory.GetCurrentDirectory(), "config", AppName);
-            if (Directory.Exists(dir) is false)
-            {
-                Directory.CreateDirectory(dir);
-            }
-            return dir;
-        }
     }
 }

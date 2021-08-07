@@ -13,7 +13,6 @@ namespace Amiable.Adapter.Kum
         public static AppService UseKumConfig(this AppService service)
         {
             service.SetAppInfoConverter<KumAppInfoConverter>();
-            service.SetEventConverter<DefaultEventConverter>();
             service.DefaultApiWrapper = new KumApiWrapper();
             return service;
         }

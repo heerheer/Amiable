@@ -1,4 +1,5 @@
-﻿using Amiable.Adapter.Kum;
+﻿using Ami.ReplyBot;
+using Amiable.Adapter.Kum;
 using Amiable.Adapter.MQ;
 using Amiable.SDK;
 using Amiable.SDK.Interface;
@@ -19,9 +20,6 @@ namespace Amiable.Core
         //会在Init后注册。
         public static void RegEvents()
         {
-            //这里要让插件成功引用其他的部分。
-            Example.Example.DoNothing();
-
             //注册事件
             //这里很有必要因为Assembly读不了...我也不知道怎么回事
             //Events.Add((IPluginEvent)Activator.CreateInstance<>()));
@@ -37,8 +35,9 @@ namespace Amiable.Core
                         if(!Events.Exists(x=>x.GetType() == t))
                         {
                             Events.Add((IPluginEvent)Activator.CreateInstance(t));
-                            AmiableService.App.Log($"事件注册完成{t.Name}");
-                        }      
+                            AmiableService.App.Log($"[注册事件]实例类型:{t.Name}");
+
+                        }
                     }
                     );
             }
@@ -46,11 +45,16 @@ namespace Amiable.Core
 
         static AmiableService()
         {
+
+            //这里要让插件成功引用其他的项目。
+            //Example.Example.DoNothing();
+
+
             //初始化
             App = new AppService();
             SetAppInfo();
             ServiceBuilder(App);
-            RegEvents();//注册所有事件?防止出问题
+            RegEvents();//注册所有事件
         }
 
         /// <summary>
@@ -63,9 +67,15 @@ namespace Amiable.Core
                 Name = "Amiable.Core",
                 Author = "Heer Kaisair",
                 Version = "1.0.0",
-                Description = "Amiable例程插件",
-                AppId="top.amiable.example"
+                Description = "样例",
+                AppId="top.amiable.core"
             };
+
+            //为方便一个解决方案多个项目，特此使用其他项目来覆盖AppInfo;
+
+            App.AppInfo = ReplyBot.GetAppInfo();
+
+            //App.AppInfo = Draw_A_Stick.GetAppInfo();
         }
 
         /// <summary>

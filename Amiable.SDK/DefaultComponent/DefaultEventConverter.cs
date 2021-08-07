@@ -9,8 +9,11 @@ using System.Threading.Tasks;
 
 namespace Amiable.SDK.DefaultComponent
 {
-    public class DefaultEventConverter : IEventConverter
+    public class DefaultEventConverter
     {
+        /// <summary>
+        /// PCQQ标准的事件
+        /// </summary>
         public enum CommonEventType
         {
             None = -1,
@@ -59,70 +62,5 @@ namespace Amiable.SDK.DefaultComponent
             PluginClicked = 12003,
         }
 
-        class EventTypeAndSub
-        {
-            public int type; 
-            public int subtype; 
-            public AmiableEventType AmiableEventType;
-
-            public EventTypeAndSub(int type, int subtype, AmiableEventType amiableEventType)
-            {
-                this.type = type;
-                this.subtype = subtype;
-                AmiableEventType = amiableEventType;
-            }
-        }
-
-        Dictionary<int, EventTypeAndSub> dic = new()
-        {
-            { (int)CommonEventType.Friend, new((int)EventType.MESSAGE, (int)MessageEventSubType.FRIEND, AmiableEventType.Private) },
-
-            { (int)CommonEventType.Group, new((int)EventType.MESSAGE, (int)MessageEventSubType.NORMAL, AmiableEventType.Group ) },
-
-            { (int)CommonEventType.GroupTmp, new((int)EventType.MESSAGE, (int)MessageEventSubType.GROUP, AmiableEventType.Private) }
-
-
-        };
-
-        public AmiableEventType Convert(int eventType, int subType)
-        {
-            if (dic.ContainsKey(eventType))
-            {
-                var rec = dic[eventType];
-                return rec.AmiableEventType;
-            }
-            else
-            {
-                return AmiableEventType.Error;
-            }
-        }
-
-        public EventType GetOnebotEventType(int eventType)
-        {
-            if (dic.ContainsKey(eventType))
-            {
-                var rec = dic[eventType];
-                return (EventType)rec.type;
-            }
-            else
-            {
-                throw new Exception("暂不支持的事件");
-            }
-        }
-
-        public MessageEventType GetMessageEventType(int eventType, int subType)
-        {
-            var eventtype = Convert(eventType, subType);
-            return (AmiableEventType)eventType switch
-            {
-                AmiableEventType.Private=>MessageEventType.PRIVATE,
-                AmiableEventType.Group =>MessageEventType.GROUP
-            };
-        }
-
-        public MessageEventSubType GetMessageEventSubType(int eventType, int subType)
-        {
-            return MessageEventSubType.NORMAL;
-        }
     }
 }
