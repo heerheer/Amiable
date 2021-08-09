@@ -365,4 +365,5 @@ FodyWeavers.xsd
 #Amiable Export
 app.public/
 public/
+# Deploy.sh
 deploy.sh
