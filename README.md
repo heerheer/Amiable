@@ -17,3 +17,10 @@ https://dotnet.microsoft.com/download/dotnet-framework/net48
 
 https://heerheer.github.io/Amiable-Doc/
 
+# 使用Amiable
+[官方文档](https://heerheer.github.io/Amiable-Doc/)
+
+![](https://img.shields.io/badge/Amiable-v1-orange)
+
+
+
