@@ -18,9 +18,6 @@ namespace Amiable.SDK
 
         private AppService instance;
 
-        /// <summary>
-        /// 获取AppService实例（
-        /// </summary>
         public AppService Instance {
 
             get { 

@@ -1,11 +1,5 @@
-﻿using Amiable.SDK.DefaultComponent;
-using HuajiTech.UnmanagedExports;
+﻿using HuajiTech.UnmanagedExports;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Amiable.Core
 {
@@ -16,7 +10,7 @@ namespace Amiable.Core
         [DllExport]
         public static int MQ_End()
         {
-            
+
             return 0;
         }
 
@@ -24,7 +18,12 @@ namespace Amiable.Core
         public static int MQ_Message() => 0;
 
         [DllExport]
-        public static void MQ_Set() { }
+        public static void MQ_Set()
+        {
+
+            Event_PluginMenu(
+                new SDK.EventArgs.AmiableEventArgs { Robot = 0, EventType = SDK.Enum.EventType.META_EVENT, Timestamp = DateTime.Now.Ticks});
+        }
 
         [DllExport]
         public static string MQ_Info() => InitEvent();
@@ -34,7 +33,7 @@ namespace Amiable.Core
             MQ_Event(string robotQQ, int eventType, int extraType, string from, string fromQQ, string targetQQ, string content, string index, string msgid, string udpmsg, string unix, int p)
         {
             return XX_Event(robotQQ, eventType, extraType, from, fromQQ, targetQQ, content, index, msgid, udpmsg, unix, p);
-           
+
         }
 
 #endif

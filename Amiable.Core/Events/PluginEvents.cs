@@ -1,10 +1,5 @@
 ﻿using Amiable.SDK.Enum;
 using Amiable.SDK.EventArgs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Amiable.Core
 {
@@ -30,6 +25,17 @@ namespace Amiable.Core
         public static void Event_PluginEnable(AmiableEventArgs eventArgs)
         {
             AmiableEventType amiableEventType = AmiableEventType.PluginEnable;
+
+            InvokeEvents(amiableEventType, eventArgs);
+        }
+
+        /// <summary>
+        /// 插件被唤起设置/菜单
+        /// </summary>
+        /// <param name="eventArgs"></param>
+        public static void Event_PluginMenu(AmiableEventArgs eventArgs)
+        {
+            AmiableEventType amiableEventType = AmiableEventType.PluginMenu;
 
             InvokeEvents(amiableEventType, eventArgs);
         }

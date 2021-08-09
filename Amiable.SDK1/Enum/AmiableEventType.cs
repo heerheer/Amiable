@@ -36,10 +36,5 @@ namespace Amiable.SDK.Enum
       /// 插件被载入
       /// </summary>
        PluginLoaded,
-
-       /// <summary>
-       /// 唤起菜单事件
-       /// </summary>
-        PluginMenu
     }
 }

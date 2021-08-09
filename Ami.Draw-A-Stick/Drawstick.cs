@@ -20,15 +20,33 @@ namespace Amiable.Example
         {
             var stick_Path = Path.Combine(e.AppDirectory, "签.ini");
 
+            var needdownload = false;
+
             if (!File.Exists(stick_Path))
             {
-                //没签？
-                Task.Factory.StartNew(async () => {
-                    //e.XQAPI.Log("联网获取抽签数据...");
-                    var str = await new HttpClient().GetAsync("https://gitee.com/heerkaisair/Draw-A-Stick/raw/master/%E7%AD%BE.ini");
-                    File.WriteAllText(stick_Path, await str.Content.ReadAsStringAsync());
+                needdownload = true;
 
-                    e.ApiWrapper.OutPutLog("初始化抽签2资源成功");
+            }else if (File.ReadAllText(stick_Path) == string.Empty)
+            {
+                needdownload = true;
+            }
+
+            if (needdownload)
+            {
+                //没签？
+                Task.Factory.StartNew(async () =>
+                {
+                    try
+                    {
+                        e.ApiWrapper.OutPutLog("联网获取抽签数据...");
+                        var str = await new HttpClient().GetAsync("https://gitee.com/heerkaisair/Draw-A-Stick/raw/master/%E7%AD%BE.ini");
+                        File.WriteAllText(stick_Path, await str.Content.ReadAsStringAsync());
+                        e.ApiWrapper.OutPutLog("初始化抽签2资源成功");
+                    }
+                    catch (Exception)
+                    {
+                        e.ApiWrapper.OutPutLog("初始化抽签2资源失败");
+                    }
                 });
             }
         }
@@ -43,7 +61,7 @@ namespace Amiable.Example
 
             AmiableMessageEventArgs e = _e as AmiableMessageEventArgs;
 
-            if(e.RawMessage != "抽签" && e.RawMessage != "解签")
+            if (e.RawMessage != "抽签" && e.RawMessage != "解签")
             {
                 return;
             }

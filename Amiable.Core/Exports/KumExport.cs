@@ -1,15 +1,12 @@
 ﻿using Amiable.SDK.EventArgs;
 using HuajiTech.UnmanagedExports;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace Amiable.Core
 {
 #if Platform_Kum || DEBUG
+    //Moh
     public static partial class Export
     {
         [DllExport]//消息_事件_收到群聊消息

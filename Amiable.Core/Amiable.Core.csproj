@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Costura.Fody.4.1.0\build\Costura.Fody.props" Condition="Exists('..\packages\Costura.Fody.4.1.0\build\Costura.Fody.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,12 +8,15 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Amiable.Core</RootNamespace>
-    <AssemblyName>ReplyBot复读姬.MQ</AssemblyName>
+    <AssemblyName>ReplyBot.MQ</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -72,10 +74,46 @@
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Build_Kum|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Build_Kum\</OutputPath>
+    <DefineConstants>TRACE;Platform_Kum</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Build_Kum|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Build_Kum\</OutputPath>
+    <DefineConstants>TRACE;Platform_Kum</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Build_MQ|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Build_MQ\</OutputPath>
+    <DefineConstants>TRACE;Platform_Kum</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Build_MQ|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Build_MQ\</OutputPath>
+    <DefineConstants>TRACE;Platform_MQ</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Costura, Version=4.1.0.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
-      <HintPath>..\packages\Costura.Fody.4.1.0\lib\net40\Costura.dll</HintPath>
-    </Reference>
     <Reference Include="HuajiTech.UnmanagedExports, Version=1.0.2.0, Culture=neutral, PublicKeyToken=3d66017a845d9010, processorArchitecture=MSIL">
       <HintPath>..\packages\HuajiTech.UnmanagedExports.Metadata.1.0.2\lib\net461\HuajiTech.UnmanagedExports.dll</HintPath>
     </Reference>
@@ -100,8 +138,8 @@
     <Reference Include="System.Text.Encodings.Web, Version=5.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.Encodings.Web.5.0.1\lib\net461\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
-    <Reference Include="System.Text.Json, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Json.5.0.2\lib\net461\System.Text.Json.dll</HintPath>
+    <Reference Include="System.Text.Json, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.5.0.0\lib\net461\System.Text.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
@@ -121,14 +159,16 @@
     <Compile Include="Events\Common_Event.cs" />
     <Compile Include="Events\MessageEvents.cs" />
     <Compile Include="Events\PluginEvents.cs" />
-    <Compile Include="Export.cs" />
+    <Compile Include="Exports\Export.cs" />
     <Compile Include="Exports\KumExport.cs" />
     <Compile Include="Exports\MQExport.cs" />
     <Compile Include="Exports\XQExport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\AmiableServiceCore.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -136,44 +176,51 @@
       <Project>{6aa4d075-4ebf-4fd5-b308-26eefcdc948d}</Project>
       <Name>Ami.Draw-A-Stick</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ami.HorseRace\Ami.HorseRace.csproj">
+      <Project>{5971a8ed-2390-4bfd-8bfa-e349fc6ee754}</Project>
+      <Name>Ami.HorseRace</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ami.ReplyBot\Ami.ReplyBot.csproj">
       <Project>{67173E14-95DD-4734-9DAA-8E3337A237CB}</Project>
       <Name>Ami.ReplyBot</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Amiable.Adapter.Kum\Amiable.Adapter.Kum.csproj">
-      <Project>{e7c115fd-c0a8-45ad-a527-369c7e4fccb0}</Project>
-      <Name>Amiable.Adapter.Kum</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Amiable.Adapter.MQ\Amiable.Adapter.MQ.csproj">
-      <Project>{589da853-efcb-4715-85fc-1caf7d72c049}</Project>
-      <Name>Amiable.Adapter.MQ</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Amiable.Adapter.XQ\Amiable.Adapter.XQ.csproj">
-      <Project>{ec265bda-77d4-497f-a4a5-d44231c29897}</Project>
-      <Name>Amiable.Adapter.XQ</Name>
+    <ProjectReference Include="..\Amiable.Adapters\Amiable.Adapters.csproj">
+      <Project>{9428aab9-3589-41eb-916a-547e62c0955c}</Project>
+      <Name>Amiable.Adapters</Name>
     </ProjectReference>
     <ProjectReference Include="..\Amiable.Example\Amiable.Example.csproj">
       <Project>{41342086-6a9d-45cd-9a81-1cc87381d255}</Project>
       <Name>Amiable.Example</Name>
     </ProjectReference>
     <ProjectReference Include="..\Amiable.SDK\Amiable.SDK.csproj">
-      <Project>{84a9b9c7-c073-4eaf-a151-75cd2954c44b}</Project>
+      <Project>{13892293-78BE-48C4-AD20-2622BCB3CB06}</Project>
       <Name>Amiable.SDK</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\Fody.6.0.0\build\Fody.targets" Condition="Exists('..\packages\Fody.6.0.0\build\Fody.targets')" />
   <Import Project="..\packages\HuajiTech.UnmanagedExports.MSBuild.1.0.0-rc2\build\HuajiTech.UnmanagedExports.MSBuild.targets" Condition="Exists('..\packages\HuajiTech.UnmanagedExports.MSBuild.1.0.0-rc2\build\HuajiTech.UnmanagedExports.MSBuild.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Fody.6.0.0\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.0.0\build\Fody.targets'))" />
-    <Error Condition="!Exists('..\packages\Costura.Fody.4.1.0\build\Costura.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.4.1.0\build\Costura.Fody.props'))" />
     <Error Condition="!Exists('..\packages\HuajiTech.UnmanagedExports.MSBuild.1.0.0-rc2\build\HuajiTech.UnmanagedExports.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\HuajiTech.UnmanagedExports.MSBuild.1.0.0-rc2\build\HuajiTech.UnmanagedExports.MSBuild.targets'))" />
+    <Error Condition="!Exists('..\packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets'))" />
+  </Target>
+  <Import Project="..\packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets" Condition="Exists('..\packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets')" />
+  <Target Name="PrePack" BeforeTargets="Build">
+    <Delete Files="$(SolutionDir)app.publish\$(TargetName).dll" />
   </Target>
   <Target Name="Pack" AfterTargets="Build" BeforeTargets="AfterBuild; PostBuildEvent">
+    <MakeDir Condition="!Exists('$(PublishDir)')" Directories="$(PublishDir)" />
+    <ItemGroup>
+      <InputAssemblies Include="$(TargetPath)" />
+      <InputAssemblies Include="$(OutputPath)*.dll" Exclude="$(TargetPath)" />
+      <InputAssemblies Include="$(OutputPath)*.exe" Exclude="$(TargetPath)" />
+    </ItemGroup>
+    <Message Text="23333" />
+    <ILRepack Parallel="true" DebugInfo="false" XmlDocumentation="false" AllowDuplicateResources="false" InputAssemblies="@(InputAssemblies)" TargetKind="Dll" KeyFile="$(KeyFile)" OutputFile="$(TargetPath)" />
+    <Message Text="$(SolutionDir)app.publish\$(TargetName).dll" />
     <UnmanagedExport File="$(TargetPath)" />
-    <Move SourceFiles="$(TargetPath)" DestinationFiles="$(SolutionDir)app.publish\$(TargetName).dll" />
+    <Move SourceFiles="$(TargetPath)" DestinationFolder="$(SolutionDir)\publish" />
   </Target>
 </Project>

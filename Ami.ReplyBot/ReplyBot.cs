@@ -16,7 +16,7 @@ namespace Ami.ReplyBot
         {
             return new AppInfo
             {
-                Name = "ReplyBot复读姬",
+                Name = "ReplyBot",
                 Author = "Heer Kaisair",
                 Version = "1.0.0",
                 Description = "1,2,3,复读!!~",

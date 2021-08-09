@@ -1,27 +1,33 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>9.0</LangVersion>
   </PropertyGroup>
-  
+
   <PropertyGroup>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <Version>1.0.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>Heer Kaisair</Authors>
+    <Authors>Heer kaisair</Authors>
     <Company>Amiable Inc.</Company>
-    <Description>Amiable的SDK,用于编写Adapter与插件项目。</Description>
     <PackageIcon>Amiable_Icon.png</PackageIcon>
     <PackageIconUrl />
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>you should konw.txt</PackageLicenseFile>
   </PropertyGroup>
-  
+
+  <ItemGroup>
+    <Folder Include="Ono\" />
+    <Folder Include="Xlz\" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="System.Text.Json" Version="5.0.0" />
   </ItemGroup>
-  
+
+  <ItemGroup>
+    <ProjectReference Include="..\Amiable.SDK\Amiable.SDK.csproj" />
+  </ItemGroup>
+
   <ItemGroup>
     <None Include="..\Amiable_Icon.png">
       <Pack>True</Pack>
