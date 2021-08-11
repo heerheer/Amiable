@@ -7,35 +7,40 @@ using Amiable.SDK.Wrapper;
 using System.IO;
 using Amiable.SDK.Interface;
 using Amiable.SDK.Configuration;
+// ReSharper disable CollectionNeverQueried.Global
 
 namespace Amiable.SDK
 {
     public class AppService
     {
+        private string _apiKey;
+
         /// <summary>
         /// 将AppInfo转化为框架识别JSON的转换器
         /// </summary>
         private IAppInfoConverter appInfoConverter;
 
-        private static AppService instance;
+        private static AppService _instance;
 
         /// <summary>
         /// 获取AppService实例（
         /// </summary>
-        public static AppService Instance {
-
-            get { 
-                if(instance is null)
+        public static AppService Instance
+        {
+            get
+            {
+                if (_instance is null)
                 {
-                    instance = new AppService();
+                    _instance = new AppService();
                 }
-                return instance;
+
+                return _instance;
             }
         }
 
         public AppService()
         {
-            instance=this;
+            _instance = this;
         }
 
 
@@ -47,9 +52,37 @@ namespace Amiable.SDK
         /// <summary>
         /// Api包装器的初始实例
         /// </summary>
-        public IApiWrapper DefaultApiWrapper;
+        public IApiWrapper DefaultApiWrapper
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_apiKey))
+                {
+                    return ApiWrappers.First().Value;
+                }
 
+                if (ApiWrappers.ContainsKey(_apiKey) is false)
+                {
+                    return ApiWrappers.First().Value;
+                }
+
+                return ApiWrappers[_apiKey];
+            }
+        }
+        
+        /// <summary>
+        /// 一堆API包装器
+        /// </summary>
         public Dictionary<string, IApiWrapper> ApiWrappers = new();
+
+        /// <summary>
+        /// 请在create函数设置AppService.Instance的apiKey用于识别API
+        /// </summary>
+        /// <param name="key"></param>
+        public void SetApiKey(string key)
+        {
+            _apiKey = key;
+        }
 
         public List<IEventFilter> EventFilters = new();
         public List<IService> Services = new();
@@ -60,10 +93,12 @@ namespace Amiable.SDK
         /// <typeparam name="T"></typeparam>
         public void SetAppInfoConverter<T>() where T : IAppInfoConverter, new() => appInfoConverter = new T();
 
+
         public string GetAppInfoSring() => appInfoConverter.Convert(AppInfo);
 
 
         #region 日志相关方法
+
         /// <summary>
         /// 以Amiable.Core的方式输出日志文本
         /// </summary>
@@ -71,12 +106,13 @@ namespace Amiable.SDK
         public void Log(params object[] args)
         {
             var dir = Path.Combine(Directory.GetCurrentDirectory(), "Amiable");
-            if(Directory.Exists(dir) is false)
+            if (Directory.Exists(dir) is false)
             {
                 Directory.CreateDirectory(dir);
             }
+
             var path = Path.Combine(dir, $"{AppInfo?.Name ?? "Amiable"}.{DateTime.Now:yyMMdd}.log");
-            File.AppendAllText(path, $"[{DateTime.Now.ToShortTimeString()}]{string.Join("",args)}\n");
+            File.AppendAllText(path, $"[{DateTime.Now.ToShortTimeString()}]{string.Join("", args)}\n");
         }
 
         /// <summary>
@@ -85,10 +121,9 @@ namespace Amiable.SDK
         /// <param name="args"></param>
         public void Debug(params object[] args)
         {
-            Log("[Debug]",args);
+            Log("[Debug]", args);
         }
+
         #endregion
     }
-
-
 }

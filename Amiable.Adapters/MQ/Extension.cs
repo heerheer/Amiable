@@ -1,12 +1,7 @@
-﻿using Amiable.SDK;
-using Amiable.SDK.DefaultComponent;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Amiable.Adapter.MQ;
+using Amiable.SDK;
 
-namespace Amiable.Adapter.MQ
+namespace Amiable.Adapters.MQ
 {
     public static class Extension
     {
@@ -15,10 +10,10 @@ namespace Amiable.Adapter.MQ
         /// </summary>
         /// <param name="service"></param>
         /// <returns></returns>
-        public static AppService UseMQConfig(this AppService service)
+        public static AppService AddMQConfig(this AppService service)
         {
             service.SetAppInfoConverter<MQAppInfoConverter>();
-            service.DefaultApiWrapper = new MQApiWrapper();
+            service.ApiWrappers.Add("MQ",new MQApiWrapper());
             return service;
         }
     }

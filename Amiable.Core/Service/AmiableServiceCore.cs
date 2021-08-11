@@ -11,6 +11,9 @@ namespace Amiable.Core
     /*部分不会需要改动的地方*/
     public static partial class AmiableService
     {
+
+        public static string ApiKey;
+        
         public static AppService App;
 
         public static List<IPluginEvent> Events = new List<IPluginEvent>();

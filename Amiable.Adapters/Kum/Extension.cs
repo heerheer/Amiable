@@ -1,7 +1,7 @@
-﻿using Amiable.SDK;
-using Amiable.SDK.DefaultComponent;
+﻿using Amiable.Adapter.Kum;
+using Amiable.SDK;
 
-namespace Amiable.Adapter.Kum
+namespace Amiable.Adapters.Kum
 {
     public static class Extension
     {
@@ -10,10 +10,10 @@ namespace Amiable.Adapter.Kum
         /// </summary>
         /// <param name="service"></param>
         /// <returns></returns>
-        public static AppService UseKumConfig(this AppService service)
+        public static AppService AddKumConfig(this AppService service)
         {
             service.SetAppInfoConverter<KumAppInfoConverter>();
-            service.DefaultApiWrapper = new KumApiWrapper();
+            service.ApiWrappers.Add("Kum",new KumApiWrapper());
             return service;
         }
     }

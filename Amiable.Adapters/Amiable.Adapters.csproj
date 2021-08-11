@@ -3,6 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>9.0</LangVersion>
+    <PackageVersion>1.0.1</PackageVersion>
+    <Title>Amiable.Adapters</Title>
+    <Description>Amiable官方API与事件适配器包</Description>
   </PropertyGroup>
 
   <PropertyGroup>

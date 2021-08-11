@@ -1,7 +1,7 @@
-﻿using Amiable.SDK;
-using Amiable.SDK.DefaultComponent;
+﻿using Amiable.Adapter.XQ;
+using Amiable.SDK;
 
-namespace Amiable.Adapter.XQ
+namespace Amiable.Adapters.XQ
 {
     public static class Extension
     {
@@ -10,10 +10,10 @@ namespace Amiable.Adapter.XQ
         /// </summary>
         /// <param name="service"></param>
         /// <returns></returns>
-        public static AppService UseXQConfig(this AppService service)
+        public static AppService AddXQConfig(this AppService service)
         {
             service.SetAppInfoConverter<XQAppInfoConverter>();
-            service.DefaultApiWrapper = new XQApiWrapper();
+            service.ApiWrappers.Add("XQ",new XQApiWrapper());
             return service;
         }
     }

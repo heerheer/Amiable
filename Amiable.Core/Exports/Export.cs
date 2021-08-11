@@ -26,6 +26,7 @@ namespace Amiable.Core
             //初始化API包装器
             try
             {
+                AmiableService.App.SetApiKey(AmiableService.ApiKey);
                 AmiableService.App.DefaultApiWrapper.Init((short)args[0], (int)args[1]);
             }
             catch (Exception ex)
@@ -44,6 +45,7 @@ namespace Amiable.Core
 
             try
             {
+                AmiableService.App.SetApiKey(AmiableService.ApiKey);
                 return AmiableService.App.GetAppInfoSring();
             }
             catch (Exception ex)
@@ -59,6 +61,7 @@ namespace Amiable.Core
         /// <param name="args"></param>
         private static void AfterInitEvent(params object[] args)
         {
+            AmiableService.App.SetApiKey(AmiableService.ApiKey);
             //TODO
         }
 
@@ -72,6 +75,7 @@ namespace Amiable.Core
         {
             try
             {
+                AmiableService.App.SetApiKey(AmiableService.ApiKey);
                 //克隆ApiWrapper
                 IApiWrapper apiWrapper = AmiableService.App.DefaultApiWrapper.Clone() as IApiWrapper;
 

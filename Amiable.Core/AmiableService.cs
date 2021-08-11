@@ -7,6 +7,9 @@ using Amiable.SDK.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Amiable.Adapters.Kum;
+using Amiable.Adapters.MQ;
+using Amiable.Adapters.XQ;
 
 namespace Amiable.Core
 {
@@ -27,7 +30,7 @@ namespace Amiable.Core
                 AppId = "top.amiable.core"
             };
 
-            App.AppInfo = ReplyBot.GetAppInfo();
+            App.AppInfo = Example.Example.GetAppInfo();
 
         }
 
@@ -37,8 +40,9 @@ namespace Amiable.Core
         /// <param name="service"></param>
         public static void ServiceBuilder(AppService service)
         {
-
-            service.UseMQConfig();
+            
+            //添加对这些框架的API包装器
+            service.AddMQConfig().AddKumConfig().AddXQConfig();
         }
     }
 }
