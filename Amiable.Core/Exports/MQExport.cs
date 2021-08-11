@@ -5,7 +5,7 @@ namespace Amiable.Core
 {
     public static partial class Export
     {
-#if Platform_MQ || DEBUG
+
 
         [DllExport]
         public static int MQ_End()
@@ -26,7 +26,11 @@ namespace Amiable.Core
         }
 
         [DllExport]
-        public static string MQ_Info() => InitEvent();
+        public static string MQ_Info()
+        {
+            AmiableService.ApiKey = "MQ";
+            return InitEvent();
+        }
 
         [DllExport]
         public static int
@@ -35,7 +39,6 @@ namespace Amiable.Core
             return XX_Event(robotQQ, eventType, extraType, from, fromQQ, targetQQ, content, index, msgid, udpmsg, unix, p);
 
         }
-
-#endif
+        
     }
 }

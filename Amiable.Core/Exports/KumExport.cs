@@ -5,7 +5,6 @@ using System.Text.Json;
 
 namespace Amiable.Core
 {
-#if Platform_Kum || DEBUG
     //Moh
     public static partial class Export
     {
@@ -59,7 +58,10 @@ namespace Amiable.Core
         }
 
         [DllExport]//插件信息
-        public static string Kum_AppInfo_AAAAAAAAAAAAAA() => InitEvent();
+        public static string Kum_AppInfo_AAAAAAAAAAAAAA()
+        {
+            AmiableService.ApiKey = "Kum";
+            return InitEvent();
+        }
     }
-#endif
 }
