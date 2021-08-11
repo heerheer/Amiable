@@ -74,42 +74,6 @@
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Build_Kum|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\Build_Kum\</OutputPath>
-    <DefineConstants>TRACE;Platform_Kum</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Build_Kum|x86'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Build_Kum\</OutputPath>
-    <DefineConstants>TRACE;Platform_Kum</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Build_MQ|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\Build_MQ\</OutputPath>
-    <DefineConstants>TRACE;Platform_Kum</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Build_MQ|x86'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Build_MQ\</OutputPath>
-    <DefineConstants>TRACE;Platform_MQ</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-  </PropertyGroup>
   <PropertyGroup>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
@@ -161,6 +125,7 @@
     <Compile Include="Events\PluginEvents.cs" />
     <Compile Include="Exports\Export.cs" />
     <Compile Include="Exports\KumExport.cs" />
+    <Compile Include="Exports\LYPExport.cs" />
     <Compile Include="Exports\MQExport.cs" />
     <Compile Include="Exports\XQExport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

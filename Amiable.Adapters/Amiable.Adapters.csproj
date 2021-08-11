@@ -18,6 +18,7 @@
   <ItemGroup>
     <Folder Include="Ono\" />
     <Folder Include="Xlz\" />
+    <Folder Include="LYP\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Amiable.SDK.Wrapper;
 using System.IO;
 using Amiable.SDK.Interface;
+using Amiable.SDK.Configuration;
 
 namespace Amiable.SDK
 {
@@ -16,12 +17,12 @@ namespace Amiable.SDK
         /// </summary>
         private IAppInfoConverter appInfoConverter;
 
-        private AppService instance;
+        private static AppService instance;
 
         /// <summary>
         /// 获取AppService实例（
         /// </summary>
-        public AppService Instance {
+        public static AppService Instance {
 
             get { 
                 if(instance is null)
@@ -47,6 +48,11 @@ namespace Amiable.SDK
         /// Api包装器的初始实例
         /// </summary>
         public IApiWrapper DefaultApiWrapper;
+
+        public Dictionary<string, IApiWrapper> ApiWrappers = new();
+
+        public List<IEventFilter> EventFilters = new();
+        public List<IService> Services = new();
 
         /// <summary>
         /// 设置AppInfo转换文本实例
