@@ -29,4 +29,9 @@ https://heerheer.github.io/Amiable-Doc/
 
 ![](https://img.shields.io/badge/Amiable-v1-orange)
 
+# 样例
 
+## v1(多API版)
+
+## 旧版(单编译版)
+https://github.com/heerheer/BoringBot
