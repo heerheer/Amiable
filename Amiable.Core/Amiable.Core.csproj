@@ -34,6 +34,12 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Amiable.Adapters, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Amiable.Adapters.1.0.1\lib\netstandard2.0\Amiable.Adapters.dll</HintPath>
+    </Reference>
+    <Reference Include="Amiable.SDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Amiable.SDK.1.0.1\lib\netstandard2.0\Amiable.SDK.dll</HintPath>
+    </Reference>
     <Reference Include="HuajiTech.UnmanagedExports, Version=1.0.2.0, Culture=neutral, PublicKeyToken=3d66017a845d9010, processorArchitecture=MSIL">
       <HintPath>..\packages\HuajiTech.UnmanagedExports.Metadata.1.0.2\lib\net461\HuajiTech.UnmanagedExports.dll</HintPath>
     </Reference>
@@ -91,7 +97,6 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\HuajiTech.UnmanagedExports.MSBuild.1.0.0-rc2\build\HuajiTech.UnmanagedExports.MSBuild.targets" Condition="Exists('..\packages\HuajiTech.UnmanagedExports.MSBuild.1.0.0-rc2\build\HuajiTech.UnmanagedExports.MSBuild.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

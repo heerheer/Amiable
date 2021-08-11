@@ -1,6 +1,4 @@
-﻿using Ami.Draw_A_Stick;
-using Ami.ReplyBot;
-using Amiable.Adapter.Kum;
+﻿using Amiable.Adapter.Kum;
 using Amiable.Adapter.MQ;
 using Amiable.SDK;
 using Amiable.SDK.Interface;
@@ -30,7 +28,6 @@ namespace Amiable.Core
                 AppId = "top.amiable.core"
             };
 
-            App.AppInfo = Example.Example.GetAppInfo();
 
         }
 
