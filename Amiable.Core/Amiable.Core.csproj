@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Amiable.Core</RootNamespace>
-    <AssemblyName>Amiable.Example.XXX</AssemblyName>
+    <AssemblyName>Amiable.Example</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -93,18 +93,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ami.Draw-A-Stick\Ami.Draw-A-Stick.csproj">
-      <Project>{6aa4d075-4ebf-4fd5-b308-26eefcdc948d}</Project>
-      <Name>Ami.Draw-A-Stick</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Ami.HorseRace\Ami.HorseRace.csproj">
-      <Project>{5971a8ed-2390-4bfd-8bfa-e349fc6ee754}</Project>
-      <Name>Ami.HorseRace</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Ami.ReplyBot\Ami.ReplyBot.csproj">
-      <Project>{67173E14-95DD-4734-9DAA-8E3337A237CB}</Project>
-      <Name>Ami.ReplyBot</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Amiable.Adapters\Amiable.Adapters.csproj">
       <Project>{9428aab9-3589-41eb-916a-547e62c0955c}</Project>
       <Name>Amiable.Adapters</Name>

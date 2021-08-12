@@ -18,7 +18,7 @@ namespace Amiable.SDK
         /// <summary>
         /// 将AppInfo转化为框架识别JSON的转换器
         /// </summary>
-        private Dictionary<string, IAppInfoConverter> _appInfoConverters;
+        private Dictionary<string, IAppInfoConverter> _appInfoConverters = new();
 
         private static AppService _instance;
 

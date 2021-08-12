@@ -27,7 +27,7 @@ namespace Amiable.Core
             try
             {
                 AmiableService.App.SetApiKey(AmiableService.ApiKey);
-                AmiableService.App.DefaultApiWrapper.Init((short)args[0], (int)args[1]);
+                AmiableService.App.DefaultApiWrapper.Init(args);
             }
             catch (Exception ex)
             {

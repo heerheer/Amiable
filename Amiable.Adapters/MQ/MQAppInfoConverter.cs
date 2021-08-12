@@ -28,7 +28,7 @@ namespace Amiable.Adapter.MQ
                 json.WriteString("skey", "SDG5D4Ys89h7DJ849d");
                 json.WriteString("author", info.Author);
                 json.WriteString("description", info.Description);
-                json.WriteString("sdk", "S1");
+                json.WriteString("sdk", AmiableSDK.Version);
                 json.WriteEndObject();
                 json.Flush();
                 json.Dispose();

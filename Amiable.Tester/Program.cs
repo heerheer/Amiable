@@ -8,7 +8,7 @@ namespace Amiable.Tester
     class Program
     {
 
-        public delegate int Called();
+        public delegate string Called();
         public delegate string D2(string str);
 
         static void Main(string[] args)
@@ -44,7 +44,7 @@ namespace Amiable.Tester
 
                         }*/
             {
-                var path = @"E:\Amiable\source\Amiable.Core\bin\x86\Debug\Amiable.Core.dll";
+                var path = @"E:\Amiable\source\publish\Amiable.Example.dll";
                 var dllptr = Kernel32.LoadLibraryA(path);
 
                 if (dllptr.ToInt32() == 0)
@@ -53,9 +53,9 @@ namespace Amiable.Tester
                 }
                 {
 
-                    var process = Kernel32.GetProcAddress(dllptr, "XQ_Create");
-                    var method = Marshal.GetDelegateForFunctionPointer(process, typeof(D2)) as D2;
-                    Console.WriteLine(method.Invoke(""));
+                    var process = Kernel32.GetProcAddress(dllptr, "AppInfo");
+                    var method = Marshal.GetDelegateForFunctionPointer<Called>(process);
+                    Console.WriteLine(method.Invoke());
 
                 }
                 {

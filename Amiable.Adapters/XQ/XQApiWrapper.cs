@@ -13,6 +13,12 @@ namespace Amiable.Adapter.XQ
     {
         private static byte[] AuthId;
         public string RobotQQ { get; set; }
+        
+        public void Init(params object[] args)
+        {
+            SetAuthID((short)args[0], (int)args[1]);
+            //初始化AuthID
+        }
 
         void SetAuthID(int id, int addr)
         {
@@ -74,11 +80,6 @@ namespace Amiable.Adapter.XQ
             throw new NotImplementedException();
         }
 
-        public void Init(params object[] args)
-        {
-            SetAuthID((short)args[0], (int)args[1]);
-            //初始化AuthID
-        }
 
         public bool IsOnline(string qq)
         {
