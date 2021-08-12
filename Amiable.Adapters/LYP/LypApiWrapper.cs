@@ -15,7 +15,6 @@ namespace Amiable.Adapters.LYP
     /// </summary>
     public class LypApiWrapper : IApiWrapper
     {
-
         private int _authCode;
 
         private string appDirectory;
@@ -57,10 +56,10 @@ namespace Amiable.Adapters.LYP
             var json = Marshal.PtrToStringAnsi(new(authCode));
             JsonDocument jsonDocument = JsonDocument.Parse(json ?? throw new Exception("Lyp初始化: Authcode Json为空"));
             appId = jsonDocument.RootElement.GetProperty("id").GetString();
-            logger = jsonDocument.RootElement.GetProperty("loggerAddr").GetInt32();
-            getInstalledApps = jsonDocument.RootElement.GetProperty("getInstalledApps").GetInt32();
-            downLoad = jsonDocument.RootElement.GetProperty("downLoad").GetInt32();
-            var sdkFuncs = jsonDocument.RootElement.GetProperty("sdkFuncs").GetInt32();
+            logger = GetJsonRootElementValueInt32(jsonDocument, "loggerAddr");
+            getInstalledApps = GetJsonRootElementValueInt32(jsonDocument, "getInstalledApps");
+            downLoad = GetJsonRootElementValueInt32(jsonDocument, "downLoad");
+            var sdkFuncs = GetJsonRootElementValueInt32(jsonDocument, "sdkFuncs");
 
             GetSdkFuncs getSdkFuncs = Marshal.GetDelegateForFunctionPointer<GetSdkFuncs>(new(sdkFuncs));
             jsonDocument.Dispose();
@@ -122,7 +121,6 @@ namespace Amiable.Adapters.LYP
 
         public void SetData(AmiableEventArgs data)
         {
-            
         }
         //下面都是默认不去实现的。
 
@@ -207,7 +205,7 @@ namespace Amiable.Adapters.LYP
 
         private int GetJsonRootElementValueInt32(JsonDocument doc, string key)
         {
-            var prop = doc.RootElement.GetProperty("key");
+            var prop = doc.RootElement.GetProperty(key);
             return prop.ValueKind switch
             {
                 JsonValueKind.Number => prop.GetInt32(),

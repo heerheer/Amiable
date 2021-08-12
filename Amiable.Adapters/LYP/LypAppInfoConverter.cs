@@ -29,7 +29,7 @@ namespace Amiable.Adapters.LYP
                 json.WriteString("author", info.Author);
                 json.WriteString("description", info.Description);
                 json.WriteString("icon", $"{info.AppId}.png");
-                json.WriteString("type", $"office");
+                json.WriteString("type", $"Amiable");
                 json.WriteString("sdkVer", AmiableSDK.Version);
                 json.WriteString("menuA", $"设置窗口A");
                 json.WriteString("menuB", $"设置窗口B");
