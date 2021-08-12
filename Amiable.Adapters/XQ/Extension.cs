@@ -12,7 +12,7 @@ namespace Amiable.Adapters.XQ
         /// <returns></returns>
         public static AppService AddXQConfig(this AppService service)
         {
-            service.SetAppInfoConverter<XQAppInfoConverter>();
+            service.AddAppInfoConverter<XQAppInfoConverter>("XQ");
             service.ApiWrappers.Add("XQ",new XQApiWrapper());
             return service;
         }

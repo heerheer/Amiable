@@ -12,7 +12,7 @@ namespace Amiable.Adapters.MQ
         /// <returns></returns>
         public static AppService AddMQConfig(this AppService service)
         {
-            service.SetAppInfoConverter<MQAppInfoConverter>();
+            service.AddAppInfoConverter<MQAppInfoConverter>("MQ");
             service.ApiWrappers.Add("MQ",new MQApiWrapper());
             return service;
         }

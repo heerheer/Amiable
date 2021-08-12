@@ -18,7 +18,7 @@ namespace Amiable.SDK
         /// <summary>
         /// 将AppInfo转化为框架识别JSON的转换器
         /// </summary>
-        private IAppInfoConverter appInfoConverter;
+        private Dictionary<string, IAppInfoConverter> _appInfoConverters;
 
         private static AppService _instance;
 
@@ -91,10 +91,10 @@ namespace Amiable.SDK
         /// 设置AppInfo转换文本实例
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        public void SetAppInfoConverter<T>() where T : IAppInfoConverter, new() => appInfoConverter = new T();
+        public void AddAppInfoConverter<T>(string key) where T : IAppInfoConverter, new() =>  _appInfoConverters.Add(key,new T());
 
 
-        public string GetAppInfoSring() => appInfoConverter.Convert(AppInfo);
+        public string GetAppInfoSring() => _appInfoConverters[_apiKey].Convert(AppInfo);
 
 
         #region 日志相关方法

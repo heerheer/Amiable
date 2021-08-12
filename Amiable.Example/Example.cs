@@ -40,7 +40,7 @@ namespace Amiable.Example
                 var sb = new StringBuilder();
                 sb.AppendLine("这是一个由Amiable开发SDK制作的插件");
                 sb.AppendLine("项目地址:https://github.com/heerheer/Amiable");
-                sb.AppendLine("当前开发状态:14%");
+                sb.AppendLine("当前开发状态:20%");
                 sb.AppendLine($"当前使用的API适配器:{e.ApiWrapper.GetType().Name}");
                 sb.AppendLine($"当前API适配器列表:\n{string.Join("\n",AppService.Instance.ApiWrappers.Select(x=>x.Key))}");
                 e.SendMessage(sb.ToString());
