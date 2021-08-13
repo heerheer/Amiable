@@ -19,6 +19,10 @@
     <PackageLicenseFile>you should konw.txt</PackageLicenseFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>..\publish\nuget\</OutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
     <Folder Include="Ono\" />
     <Folder Include="Xlz\" />

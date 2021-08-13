@@ -20,6 +20,10 @@
     <PackageLicenseFile>you should konw.txt</PackageLicenseFile>
   </PropertyGroup>
   
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>..\publish\nuget</OutputPath>
+  </PropertyGroup>
+  
   <ItemGroup>
     <PackageReference Include="System.Text.Json" Version="5.0.0" />
   </ItemGroup>
