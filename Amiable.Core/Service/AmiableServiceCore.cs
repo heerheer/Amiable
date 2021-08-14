@@ -5,15 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Amiable.SDK.Enum;
 
 namespace Amiable.Core
 {
     /*部分不会需要改动的地方*/
     public static partial class AmiableService
     {
-
         public static string ApiKey;
-        
+
         public static AppService App;
 
         public static List<IPluginEvent> Events = new List<IPluginEvent>();
@@ -29,7 +29,8 @@ namespace Amiable.Core
             var ass = AppDomain.CurrentDomain.GetAssemblies();
             foreach (var item in ass)
             {
-                var types = item.GetTypes().ToList().Where(s => s != typeof(IPluginEvent) && typeof(IPluginEvent).IsAssignableFrom(s));
+                var types = item.GetTypes().ToList()
+                    .Where(s => s != typeof(IPluginEvent) && typeof(IPluginEvent).IsAssignableFrom(s));
                 types.ToList().ForEach(
                     t =>
                     {
@@ -39,21 +40,21 @@ namespace Amiable.Core
                             AmiableService.App.Log($"[注册事件]实例类型:{t.Name}");
                         }
                     }
-                    );
+                );
             }
         }
 
         static AmiableService()
         {
-
             //初始化
             App = new AppService();
             SetAppInfo();
             ServiceBuilder(App);
-            RegEvents();//注册所有事件
+            RegEvents(); //注册所有事件
 
+            //唤起AmiableLoaded事件
+            Export.InvokeEvents(AmiableEventType.AmiableLoaded, null);
             AmiableService.App.Log("[AppDomain]", AppDomain.CurrentDomain.FriendlyName);
         }
     }
 }
-
