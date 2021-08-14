@@ -13,6 +13,8 @@
 ![MQ适配器](https://img.shields.io/static/v1?label=MQ-Adapter&message=LTS-1.0&color=0080FF&style=for-the-badge)
 ![Kum适配器](https://img.shields.io/badge/Kum--Adapter-1.0-green)
 ![XQ适配器](https://img.shields.io/badge/XQ--Adapter-1.0-yellow)
+![Lyp适配器](https://img.shields.io/badge/小羽+--Adapter-1.0-yellow)
+![小栗子适配器](https://img.shields.io/badge/Xlz--Adapter-1.0-gray)
  </div>
  
 ## 注意
