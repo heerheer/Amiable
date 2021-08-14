@@ -2,7 +2,7 @@
 
 namespace Amiable.Adapters.Xlz
 {
-    public class Structs
+    public partial class Structs
     {
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public struct XlzGroupMessageEvent
