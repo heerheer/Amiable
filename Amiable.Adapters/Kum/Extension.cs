@@ -1,5 +1,6 @@
 ﻿using Amiable.Adapter.Kum;
 using Amiable.SDK;
+using Amiable.SDK.DefaultComponent;
 
 namespace Amiable.Adapters.Kum
 {
@@ -14,6 +15,7 @@ namespace Amiable.Adapters.Kum
         {
             service.AddAppInfoConverter<KumAppInfoConverter>("Kum");
             service.ApiWrappers.Add("Kum",new KumApiWrapper());
+            service.CodeProviders.Add("Kum",new CqCodeProvider());
             return service;
         }
     }

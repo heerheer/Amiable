@@ -1,5 +1,6 @@
 ﻿using Amiable.Adapter.MQ;
 using Amiable.SDK;
+using Amiable.SDK.DefaultComponent;
 
 namespace Amiable.Adapters.MQ
 {
@@ -14,6 +15,7 @@ namespace Amiable.Adapters.MQ
         {
             service.AddAppInfoConverter<MQAppInfoConverter>("MQ");
             service.ApiWrappers.Add("MQ",new MQApiWrapper());
+            service.CodeProviders.Add("MQ",new IrCodeProvider());
             return service;
         }
     }

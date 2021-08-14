@@ -11,7 +11,6 @@ namespace Amiable.Adapters.LYP
     /// </summary>
     public class LypAppInfoConverter : IAppInfoConverter
     {
-
         public string Convert(AppInfo info)
         {
             using (var stream = new MemoryStream())

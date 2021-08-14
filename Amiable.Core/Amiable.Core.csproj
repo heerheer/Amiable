@@ -27,7 +27,7 @@
     <DefineConstants>TRACE;</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
+    <LangVersion>9</LangVersion>
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <PropertyGroup>
@@ -83,6 +83,7 @@
     <Compile Include="Exports\KumExport.cs" />
     <Compile Include="Exports\LYPExport.cs" />
     <Compile Include="Exports\MQExport.cs" />
+    <Compile Include="Exports\XlzExport.cs" />
     <Compile Include="Exports\XQExport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\AmiableServiceCore.cs" />

@@ -7,6 +7,8 @@ using Amiable.SDK.Wrapper;
 using System.IO;
 using Amiable.SDK.Interface;
 using Amiable.SDK.Configuration;
+using Amiable.SDK.DefaultComponent;
+
 // ReSharper disable CollectionNeverQueried.Global
 
 namespace Amiable.SDK
@@ -69,11 +71,35 @@ namespace Amiable.SDK
                 return ApiWrappers[_apiKey];
             }
         }
-        
+
+        /// <summary>
+        /// 构造Code的工具
+        /// </summary>
+        public CodeProvider DefaultCodeProvider
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_apiKey))
+                {
+                    return CodeProviders.First().Value;
+                }
+
+                if (ApiWrappers.ContainsKey(_apiKey) is false)
+                {
+                    return CodeProviders.First().Value;
+                }
+
+                return CodeProviders[_apiKey];
+            }
+        }
+
         /// <summary>
         /// 一堆API包装器
         /// </summary>
         public Dictionary<string, IApiWrapper> ApiWrappers = new();
+
+
+        public Dictionary<string, CodeProvider> CodeProviders = new();
 
         /// <summary>
         /// 请在create函数设置AppService.Instance的apiKey用于识别API
@@ -85,13 +111,15 @@ namespace Amiable.SDK
         }
 
         public List<IEventFilter> EventFilters = new();
+
         public List<IService> Services = new();
 
         /// <summary>
         /// 设置AppInfo转换文本实例
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        public void AddAppInfoConverter<T>(string key) where T : IAppInfoConverter, new() =>  _appInfoConverters.Add(key,new T());
+        public void AddAppInfoConverter<T>(string key) where T : IAppInfoConverter, new() =>
+            _appInfoConverters.Add(key, new T());
 
 
         public string GetAppInfoSring() => _appInfoConverters[_apiKey].Convert(AppInfo);

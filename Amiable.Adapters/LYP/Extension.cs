@@ -1,5 +1,6 @@
 ﻿using Amiable.Adapter.MQ;
 using Amiable.SDK;
+using Amiable.SDK.DefaultComponent;
 
 namespace Amiable.Adapters.LYP
 {
@@ -14,6 +15,7 @@ namespace Amiable.Adapters.LYP
         {
             service.AddAppInfoConverter<LypAppInfoConverter>("Lyp");
             service.ApiWrappers.Add("Lyp",new LypApiWrapper());
+            service.CodeProviders.Add("Lyp",new CqCodeProvider());
             return service;
         }
     }

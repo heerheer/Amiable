@@ -26,7 +26,6 @@ namespace Amiable.Core
         public static int Initialize(int authCode)
         {
             AmiableService.ApiKey = "Lyp";
-            AmiableService.App.Log("[Lyp]Initialize");
             PreInitEvent(authCode);
             return 0;
         }

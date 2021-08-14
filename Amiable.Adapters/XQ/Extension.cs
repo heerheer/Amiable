@@ -1,5 +1,6 @@
 ﻿using Amiable.Adapter.XQ;
 using Amiable.SDK;
+using Amiable.SDK.DefaultComponent;
 
 namespace Amiable.Adapters.XQ
 {
@@ -14,6 +15,7 @@ namespace Amiable.Adapters.XQ
         {
             service.AddAppInfoConverter<XQAppInfoConverter>("XQ");
             service.ApiWrappers.Add("XQ",new XQApiWrapper());
+            service.CodeProviders.Add("XQ",new IrCodeProvider());
             return service;
         }
     }

@@ -9,6 +9,7 @@ using System.Linq;
 using Amiable.Adapters.Kum;
 using Amiable.Adapters.LYP;
 using Amiable.Adapters.MQ;
+using Amiable.Adapters.Xlz;
 using Amiable.Adapters.XQ;
 
 namespace Amiable.Core
@@ -37,7 +38,7 @@ namespace Amiable.Core
         public static void ServiceBuilder(AppService service)
         {
             //添加对这些框架的API包装器
-            service.AddMQConfig().AddKumConfig().AddXQConfig().AddLypConfig();
+            service.AddMQConfig().AddKumConfig().AddXQConfig().AddLypConfig().AddXlzConfig();
         }
     }
 }
