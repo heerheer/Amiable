@@ -30,5 +30,8 @@ namespace Amiable.Core
             /*对XQ需要的事件的抓换*/
             return XX_Event(robotQQ, eventType, extraType, from, fromQQ, targetQQ, content, index, msgid, udpmsg, unix, p);
         }
+
+        [DllExport]
+        public static int XQ_SetUp() => Event_PluginMenu(null);
     }
 }

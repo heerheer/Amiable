@@ -58,11 +58,21 @@ namespace Amiable.Core
 
         public delegate void SliderRecognition(long fromQQ, IntPtr url);
 
-        public static ReceivePrivateMsg ReceivePrivateMsgDelegate = delegate(IntPtr ptr) { return 0; };
-
-        public static ReceiveGroupMsg ReceiveGroupMesgDelegate = delegate(IntPtr ptr)
+        public static ReceivePrivateMsg ReceivePrivateMsgDelegate = delegate (IntPtr ptr)
         {
-            var s = Marshal.PtrToStructure<Structs.XlzGroupMessageEvent>(ptr);
+            var s = Marshal.PtrToStructure<Adapters.Xlz.Structs.PrivateMessageEvent>(ptr);
+            AmiableService.App.DefaultApiWrapper.SetData(new AmiableEventArgs()
+            {
+                Robot = s.ThisQQ
+            });
+            Export.Event_PrivateMessage(DateTime.Now.Ticks, s.ThisQQ, "", 0,
+                 s.SenderQQ, s.MessageContent, 0, s);
+            return 0;
+        };
+
+        public static ReceiveGroupMsg ReceiveGroupMesgDelegate = delegate (IntPtr ptr)
+        {
+            var s = Marshal.PtrToStructure<Adapters.Xlz.Structs.XlzGroupMessageEvent>(ptr);
             AmiableService.App.DefaultApiWrapper.SetData(new AmiableEventArgs()
             {
                 Robot = s.ThisQQ
@@ -72,13 +82,17 @@ namespace Amiable.Core
             return 0;
         };
 
-        public static ReceiveEventCallBack ReceiveEventCallBackDelegate = delegate(IntPtr ptr) { return 0; };
+        public static ReceiveEventCallBack ReceiveEventCallBackDelegate = delegate (IntPtr ptr) { return 0; };
 
-        public static RobotAppEnable RobotAppEnableDelegate = delegate() { return 0; };
-        public static AppSetting AppSettingDelegate = delegate() { return 0; };
-        public static AppUninstall AppUninstallDelegate = delegate() { };
-        public static AppDisabled AppDisabledDelegate = delegate() { };
-        public static GetSmsVerificationCode GetSmsVerificationCodeDelegate = delegate(long fromQQ, IntPtr phone) { };
-        public static SliderRecognition SliderRecognitionDelegate = delegate(long fromQQ, IntPtr url) { };
+        public static RobotAppEnable RobotAppEnableDelegate = delegate () { return 0; };
+        public static AppSetting AppSettingDelegate = delegate ()
+        {
+            Export.Event_PluginMenu(null);
+            return 0;
+        };
+        public static AppUninstall AppUninstallDelegate = delegate () { };
+        public static AppDisabled AppDisabledDelegate = delegate () { };
+        public static GetSmsVerificationCode GetSmsVerificationCodeDelegate = delegate (long fromQQ, IntPtr phone) { };
+        public static SliderRecognition SliderRecognitionDelegate = delegate (long fromQQ, IntPtr url) { };
     }
 }

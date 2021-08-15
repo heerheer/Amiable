@@ -33,11 +33,13 @@ namespace Amiable.Core
         /// 插件被唤起设置/菜单
         /// </summary>
         /// <param name="eventArgs"></param>
-        public static void Event_PluginMenu(AmiableEventArgs eventArgs)
+        public static int Event_PluginMenu(AmiableEventArgs eventArgs)
         {
             AmiableEventType amiableEventType = AmiableEventType.PluginMenu;
 
             InvokeEvents(amiableEventType, eventArgs);
+
+            return 0;
         }
     }
 }
