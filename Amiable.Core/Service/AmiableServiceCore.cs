@@ -53,7 +53,7 @@ namespace Amiable.Core
             RegEvents(); //注册所有事件
 
             //唤起AmiableLoaded事件
-            Export.InvokeEvents(AmiableEventType.AmiableLoaded, null);
+            Export.InvokeEvents(AmiableEventType.AmiableLoaded, new());
             AmiableService.App.Log("[AppDomain]", AppDomain.CurrentDomain.FriendlyName);
         }
     }
