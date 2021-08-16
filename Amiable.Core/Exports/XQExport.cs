@@ -32,6 +32,6 @@ namespace Amiable.Core
         }
 
         [DllExport]
-        public static int XQ_SetUp() => Event_PluginMenu(null);
+        public static int XQ_SetUp() => Event_PluginMenu(new());
     }
 }
