@@ -4,6 +4,8 @@ using Amiable.SDK;
 using Amiable.Adapters.Kum;
 using Amiable.Adapters.MQ;
 using Amiable.Adapters.XQ;
+using Amiable.Adapters.LYP;
+using Amiable.Adapters.Xlz;
 
 namespace Amiable.Core
 {
@@ -35,7 +37,7 @@ namespace Amiable.Core
         {
             
             //添加对这些框架的API包装器
-            service.AddMQConfig().AddKumConfig().AddXQConfig().AddMQConfig();
+            service.AddMQConfig().AddKumConfig().AddXQConfig().AddLypConfig().AddXlzConfig();
         }
     }
 }
