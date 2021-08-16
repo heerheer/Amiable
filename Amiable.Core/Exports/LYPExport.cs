@@ -173,13 +173,9 @@ namespace Amiable.Core
         [DllExport] //载入窗口
         public static int _menuA()
         {
+            Event_PluginMenu(new());
             return 0;
         }
-
-        [DllExport] //载入窗口
-        public static int _menuB()
-        {
-            return 0;
-        }
+        
     }
 }

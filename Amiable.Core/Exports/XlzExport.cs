@@ -60,7 +60,7 @@ namespace Amiable.Core
 
         public static ReceivePrivateMsg ReceivePrivateMsgDelegate = delegate (IntPtr ptr)
         {
-            var s = Marshal.PtrToStructure<Structs.PrivateMessageEvent>(ptr);
+            var s = Marshal.PtrToStructure<Adapters.Xlz.Structs.PrivateMessageEvent>(ptr);
             AmiableService.App.DefaultApiWrapper.SetData(new AmiableEventArgs()
             {
                 Robot = s.ThisQQ
@@ -72,7 +72,7 @@ namespace Amiable.Core
 
         public static ReceiveGroupMsg ReceiveGroupMesgDelegate = delegate (IntPtr ptr)
         {
-            var s = Marshal.PtrToStructure<Structs.XlzGroupMessageEvent>(ptr);
+            var s = Marshal.PtrToStructure<Adapters.Xlz.Structs.XlzGroupMessageEvent>(ptr);
             AmiableService.App.DefaultApiWrapper.SetData(new AmiableEventArgs()
             {
                 Robot = s.ThisQQ
