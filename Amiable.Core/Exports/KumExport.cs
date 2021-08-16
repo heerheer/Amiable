@@ -8,7 +8,7 @@ namespace Amiable.Core
     //Moh
     public static partial class Export
     {
-        [DllExport]//消息_事件_收到群聊消息
+        [DllExport(EntryPoint = "sj_ql")]//消息_事件_收到群聊消息
         public static int Kum_GroupMsg_AAAAAAAAAAAAAA(string self_id, string sub_type, string msg_id, string group_id, string sender_id, string msg, string anym, string sender_info, string raw)
         {
             try
@@ -25,7 +25,7 @@ namespace Amiable.Core
             return 0;
         }
 
-        [DllExport]//消息_事件_收到私聊消息
+        [DllExport(EntryPoint = "sj_sl")]//消息_事件_收到私聊消息
         public static int Kum_PrivateMsg_AAAAAAAAAAAAAA(string self_id, string sub_type, string temp_from, string msg_id, string sender_id, string msg, string sender_info, string raw)
         {
             try
@@ -42,15 +42,23 @@ namespace Amiable.Core
         }
 
         [DllExport]//插件启用
-        public static int Kum_Enable_AAAAAAAAAAAAAA()
+        public static int plugin_qy()
         {
             Event_PluginEnable(GetAmiableEventArgs(DateTime.Now.Ticks, 0, SDK.Enum.EventType.META_EVENT));
 
             return 0;
         }
 
+        [DllExport]//插件启用
+        public static int plugin_ty()
+        {
+            //Event_PluginEnable(GetAmiableEventArgs(DateTime.Now.Ticks, 0, SDK.Enum.EventType.META_EVENT));
+
+            return 0;
+        }
+
         [DllExport]//框架启动
-        public static int Kum_Loaded_AAAAAAAAAAAAAA()
+        public static int kj_qd()
         {
             Event_PluginLoad(GetAmiableEventArgs(DateTime.Now.Ticks, 0, SDK.Enum.EventType.META_EVENT));
 
@@ -58,10 +66,25 @@ namespace Amiable.Core
         }
 
         [DllExport]//插件信息
-        public static string Kum_AppInfo_AAAAAAAAAAAAAA()
+        public static string plugin_info()
         {
             AmiableService.ApiKey = "Kum";
             return InitEvent();
         }
+
+        [DllExport]//框架启动
+        public static int plugin_set()
+        {
+            Event_PluginMenu(GetAmiableEventArgs(DateTime.Now.Ticks, 0, SDK.Enum.EventType.META_EVENT));
+
+            return 0;
+        }
+
+        /*
+         群成员减少 sj_qcyjs
+群成员增加 sj_qcyzj
+好友增加 sj_hyzj
+好友请求 sj_hyqq
+加群请求 sj_jqqq*/
     }
 }
