@@ -32,6 +32,20 @@ namespace Amiable.Core
         }
 
         /// <summary>
+        /// 在这里注册事件
+        /// </summary>
+        private static void RegEvents()
+        {
+            AddPluginEvent<Example.AmiableTest>();
+            AddPluginEvent<UITest.MenuEvent>();
+
+            //AddPluginEvent<IPluginEvent类型>();
+
+        }
+
+
+
+        /// <summary>
         /// 对AppService的建造
         /// </summary>
         /// <param name="service"></param>

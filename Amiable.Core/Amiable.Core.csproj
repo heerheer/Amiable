@@ -34,6 +34,10 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Costura, Version=1.6.2.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
+      <HintPath>..\packages\Costura.Fody.1.6.2\lib\dotnet\Costura.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="HuajiTech.UnmanagedExports, Version=1.0.2.0, Culture=neutral, PublicKeyToken=3d66017a845d9010, processorArchitecture=MSIL">
       <HintPath>..\packages\HuajiTech.UnmanagedExports.Metadata.1.0.2\lib\net461\HuajiTech.UnmanagedExports.dll</HintPath>
     </Reference>
@@ -106,6 +110,13 @@
       <Project>{13892293-78BE-48C4-AD20-2622BCB3CB06}</Project>
       <Name>Amiable.SDK</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Amiable.UITest\Amiable.UITest.csproj">
+      <Project>{5867e329-eef4-41ae-9604-48116786490e}</Project>
+      <Name>Amiable.UITest</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FodyWeavers.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\HuajiTech.UnmanagedExports.MSBuild.1.0.0-rc2\build\HuajiTech.UnmanagedExports.MSBuild.targets" Condition="Exists('..\packages\HuajiTech.UnmanagedExports.MSBuild.1.0.0-rc2\build\HuajiTech.UnmanagedExports.MSBuild.targets')" />
@@ -114,23 +125,18 @@
       <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\HuajiTech.UnmanagedExports.MSBuild.1.0.0-rc2\build\HuajiTech.UnmanagedExports.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\HuajiTech.UnmanagedExports.MSBuild.1.0.0-rc2\build\HuajiTech.UnmanagedExports.MSBuild.targets'))" />
-    <Error Condition="!Exists('..\packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets'))" />
+    <Error Condition="!Exists('..\packages\Fody.2.0.0\build\netstandard1.4\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.2.0.0\build\netstandard1.4\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\Costura.Fody.1.6.2\build\dotnet\Costura.Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.1.6.2\build\dotnet\Costura.Fody.targets'))" />
   </Target>
-  <Import Project="..\packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets" Condition="Exists('..\packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets')" />
   <Target Name="PrePack" BeforeTargets="Build">
     <Delete Files="$(SolutionDir)app.publish\$(TargetName).dll" />
   </Target>
   <Target Name="Pack" AfterTargets="Build" BeforeTargets="AfterBuild; PostBuildEvent">
-    <MakeDir Condition="!Exists('$(PublishDir)')" Directories="$(PublishDir)" />
-    <ItemGroup>
-      <InputAssemblies Include="$(TargetPath)" />
-      <InputAssemblies Include="$(OutputPath)*.dll" Exclude="$(TargetPath)" />
-      <InputAssemblies Include="$(OutputPath)*.exe" Exclude="$(TargetPath)" />
-    </ItemGroup>
     <Message Text="23333" />
-    <ILRepack Parallel="true" DebugInfo="false" XmlDocumentation="false" AllowDuplicateResources="false" InputAssemblies="@(InputAssemblies)" TargetKind="Dll" KeyFile="$(KeyFile)" OutputFile="$(TargetPath)" />
     <Message Text="$(SolutionDir)app.publish\$(TargetName).dll" />
     <UnmanagedExport File="$(TargetPath)" />
     <Move SourceFiles="$(TargetPath)" DestinationFolder="$(SolutionDir)\publish" />
   </Target>
+  <Import Project="..\packages\Fody.2.0.0\build\netstandard1.4\Fody.targets" Condition="Exists('..\packages\Fody.2.0.0\build\netstandard1.4\Fody.targets')" />
+  <Import Project="..\packages\Costura.Fody.1.6.2\build\dotnet\Costura.Fody.targets" Condition="Exists('..\packages\Costura.Fody.1.6.2\build\dotnet\Costura.Fody.targets')" />
 </Project>

@@ -11,7 +11,7 @@ namespace Amiable.SDK.DefaultComponent
 
         public override string Image(string path)
         {
-            return $"[CQ:image,file={path}]";
+            return $"[CQ:image,file=file:///{path}]";
         }
     }
 }
