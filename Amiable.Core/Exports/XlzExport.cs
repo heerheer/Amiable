@@ -87,7 +87,7 @@ namespace Amiable.Core
         public static RobotAppEnable RobotAppEnableDelegate = delegate () { return 0; };
         public static AppSetting AppSettingDelegate = delegate ()
         {
-            Export.Event_PluginMenu(null);
+            Export.Event_PluginMenu(new());
             return 0;
         };
         public static AppUninstall AppUninstallDelegate = delegate () { };
