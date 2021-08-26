@@ -26,7 +26,8 @@ namespace Amiable.Core
                 { "eventmsaddres ", Xlz_Delegates.Get(Xlz_Delegates.ReceiveEventCallBackDelegate) },
                 { "useproaddres ", Xlz_Delegates.Get(Xlz_Delegates.RobotAppEnableDelegate) },
                 { "unitproaddres  ", Xlz_Delegates.Get(Xlz_Delegates.AppUninstallDelegate) },
-                { "banproaddres ", Xlz_Delegates.Get(Xlz_Delegates.AppDisabledDelegate) }
+                { "banproaddres ", Xlz_Delegates.Get(Xlz_Delegates.AppDisabledDelegate) },
+                { "setproaddres", Xlz_Delegates.Get(Xlz_Delegates.AppSettingDelegate) }
             };
             PreInitEvent(pluginkey, apidata, delegateIntptrs);
             return InitEvent(pluginkey);

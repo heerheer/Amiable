@@ -45,6 +45,7 @@ namespace Amiable.Core
         [DllExport]
         public static int _eventEnable()
         {
+Event_PluginEnable(new AmiableEventArgs());
             return 0;
         }
 
