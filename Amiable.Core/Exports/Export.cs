@@ -87,18 +87,13 @@ namespace Amiable.Core
 
                 e.AppInfo = AmiableService.App.AppInfo;
 
-                AmiableService.App.Log($"[事件唤起]{type}");
-
                 AmiableService.Events.FindAll(x => x.EventType == type).ForEach(x =>
                 {
-                    AmiableService.App.Log($"[触发事件]执行实例类型:{x.GetType().Name}");
-
                     x.Process(e);
                 }
 
 
                 );
-                //AmiableService.App.Log($"[触发事件]{type}结束");
             }
             catch (Exception ex)
             {

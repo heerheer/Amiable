@@ -36,8 +36,6 @@ namespace Amiable.Core
         /// </summary>
         private static void RegEvents()
         {
-            AddPluginEvent<Example.AmiableTest>();
-            AddPluginEvent<UITest.MenuEvent>();
 
             //AddPluginEvent<IPluginEvent类型>();
 

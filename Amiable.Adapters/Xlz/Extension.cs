@@ -14,7 +14,7 @@ namespace Amiable.Adapters.Xlz
         {
             service.AddAppInfoConverter<XlzAppInfoConverter>("Xlz");
             service.ApiWrappers.Add("Xlz",new XlzApiWrapper());
-            service.CodeProviders.Add("Xlz",new IrCodeProvider());
+            service.CodeProviders.Add("Xlz",new XlzCodeProvider());
             return service;
         }
     }

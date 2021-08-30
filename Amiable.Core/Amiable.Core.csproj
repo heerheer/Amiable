@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Amiable.Core</RootNamespace>
-    <AssemblyName>Amiable.Example</AssemblyName>
+    <AssemblyName>AmiDraw</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -94,7 +94,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -102,17 +101,9 @@
       <Project>{9428aab9-3589-41eb-916a-547e62c0955c}</Project>
       <Name>Amiable.Adapters</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Amiable.Example\Amiable.Example.csproj">
-      <Project>{41342086-6a9d-45cd-9a81-1cc87381d255}</Project>
-      <Name>Amiable.Example</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Amiable.SDK\Amiable.SDK.csproj">
       <Project>{13892293-78BE-48C4-AD20-2622BCB3CB06}</Project>
       <Name>Amiable.SDK</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Amiable.UITest\Amiable.UITest.csproj">
-      <Project>{5867e329-eef4-41ae-9604-48116786490e}</Project>
-      <Name>Amiable.UITest</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -128,12 +119,7 @@
     <Error Condition="!Exists('..\packages\Fody.2.0.0\build\netstandard1.4\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.2.0.0\build\netstandard1.4\Fody.targets'))" />
     <Error Condition="!Exists('..\packages\Costura.Fody.1.6.2\build\dotnet\Costura.Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.1.6.2\build\dotnet\Costura.Fody.targets'))" />
   </Target>
-  <Target Name="PrePack" BeforeTargets="Build">
-    <Delete Files="$(SolutionDir)app.publish\$(TargetName).dll" />
-  </Target>
   <Target Name="Pack" AfterTargets="Build" BeforeTargets="AfterBuild; PostBuildEvent">
-    <Message Text="23333" />
-    <Message Text="$(SolutionDir)app.publish\$(TargetName).dll" />
     <UnmanagedExport File="$(TargetPath)" />
     <Move SourceFiles="$(TargetPath)" DestinationFolder="$(SolutionDir)\publish" />
   </Target>

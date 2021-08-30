@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Amiable.SDK;
+using Amiable.SDK.EventArgs;
 
 namespace Amiable.Core
 {
@@ -45,6 +46,7 @@ namespace Amiable.Core
         [DllExport]
         public static int _eventEnable()
         {
+            Event_PluginEnable(new AmiableEventArgs());
             return 0;
         }
 
@@ -176,6 +178,6 @@ namespace Amiable.Core
             Event_PluginMenu(new());
             return 0;
         }
-        
+
     }
 }

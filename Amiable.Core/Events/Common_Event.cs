@@ -5,7 +5,7 @@ namespace Amiable.Core
 {
     public static partial class Export
     {
-        public static int XX_Event(string robotQQ, int eventType, int extraType, string from, string fromQQ, string targetQQ, string content, string index, string msgid, string udpmsg, string unix, int p)
+        public static int XX_Event(string robotQQ, int eventType, int extraType, string from, string fromQQ, string targetQQ, string content, string index, string msgid, string udpmsg, string unix, long p)
         {
 
             try
