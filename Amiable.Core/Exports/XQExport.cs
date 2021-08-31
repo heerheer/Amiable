@@ -13,14 +13,14 @@ namespace Amiable.Core
         public static void XQ_AuthCode(short id, int IMAddr)
         {
             AmiableService.ApiKey = "XQ";
-            PreInitEvent(id, IMAddr);
+            EventCore.PreInitEvent(id, IMAddr);
         }
 
         [DllExport]
         public static string XQ_Create(string frameworkversion)
         {
             AmiableService.ApiKey = "XQ";
-            return InitEvent();
+            return EventCore.InitEvent();
         }
 
         [DllExport]
@@ -32,6 +32,6 @@ namespace Amiable.Core
         }
 
         [DllExport]
-        public static int XQ_SetUp() => Event_PluginMenu(new());
+        public static int XQ_SetUp() => PluginEvents.Event_PluginMenu(new());
     }
 }

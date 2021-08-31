@@ -18,7 +18,7 @@ namespace Amiable.Core
             AmiableService.ApiKey = "Lyp";
             AmiableService.App.Log("[Lyp]AppInfo");
             return Marshal.StringToHGlobalAnsi(
-                InitEvent()
+                EventCore.InitEvent()
             );
         }
 
@@ -27,7 +27,7 @@ namespace Amiable.Core
         public static int Initialize(int authCode)
         {
             AmiableService.ApiKey = "Lyp";
-            PreInitEvent(authCode);
+            EventCore.PreInitEvent(authCode);
             return 0;
         }
 
@@ -46,7 +46,7 @@ namespace Amiable.Core
         [DllExport]
         public static int _eventEnable()
         {
-            Event_PluginEnable(new AmiableEventArgs());
+            PluginEvents.Event_PluginEnable(new AmiableEventArgs());
             return 0;
         }
 
@@ -60,7 +60,7 @@ namespace Amiable.Core
         public static int _eventPrivateMsg(int subType, int msgId, long userId, string msg, int font)
         {
             AmiableService.ApiKey = "Lyp";
-            return Event_PrivateMessage(DateTime.Now.Ticks, 0, "", msgId, userId, msg, font, null); //触发标准事件
+            return MessageEvents.Event_PrivateMessage(DateTime.Now.Ticks, 0, "", msgId, userId, msg, font, null); //触发标准事件
         }
 
         [DllExport] //群消息
@@ -70,7 +70,7 @@ namespace Amiable.Core
             AmiableService.App.Log("[Lyp]_eventGroupMsg");
 
             AmiableService.ApiKey = "Lyp";
-            return Event_GroupMessage(DateTime.Now.Ticks, 0, "", msgId, group, userId, msg, font, null); //触发标准事件
+            return MessageEvents.Event_GroupMessage(DateTime.Now.Ticks, 0, "", msgId, group, userId, msg, font, null); //触发标准事件
         }
 
         [DllExport] //讨论组消息,【已废弃，请监听群消息】
@@ -175,7 +175,7 @@ namespace Amiable.Core
         [DllExport] //载入窗口
         public static int _menuA()
         {
-            Event_PluginMenu(new());
+            PluginEvents.Event_PluginMenu(new());
             return 0;
         }
 

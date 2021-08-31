@@ -37,7 +37,7 @@ namespace Amiable.Core
             RegEvents();
 
             //唤起AmiableLoaded事件
-            Export.InvokeEvents(AmiableEventType.AmiableLoaded, new());
+            EventCore.InvokeEvents(AmiableEventType.AmiableLoaded, new());
             AmiableService.App.Log("[AppDomain]", AppDomain.CurrentDomain.FriendlyName);
         }
 

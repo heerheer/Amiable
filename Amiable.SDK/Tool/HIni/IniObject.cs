@@ -204,7 +204,7 @@ namespace Amiable.SDK.Tool.HIni
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public String this[string key]
+        public string this[string key]
         {
             get
             {

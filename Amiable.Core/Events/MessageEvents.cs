@@ -5,7 +5,7 @@ namespace Amiable.Core
 {
     /* 目的是将所有的框架参数转换为Onebot标准的事件参数*/
 
-    public static partial class Export
+    public static class MessageEvents
     {
 
 
@@ -36,7 +36,7 @@ namespace Amiable.Core
         {
             AmiableEventType amiableEventType = AmiableEventType.Private;
 
-            InvokeEvents(amiableEventType, eventArgs);
+            EventCore.InvokeEvents(amiableEventType, eventArgs);
             return (int)eventArgs.HandleResult;
         }
 
@@ -70,7 +70,7 @@ namespace Amiable.Core
         {
             AmiableEventType amiableEventType = AmiableEventType.Group;
 
-            InvokeEvents(amiableEventType, eventArgs);
+            EventCore.InvokeEvents(amiableEventType, eventArgs);
 
             return (int)eventArgs.HandleResult;
         }

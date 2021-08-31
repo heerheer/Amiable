@@ -79,10 +79,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapters\AmiableAdapter.cs" />
+    <Compile Include="Adapters\Kum\Extension.cs" />
+    <Compile Include="Adapters\Kum\KumApiWrapper.cs" />
+    <Compile Include="Adapters\Kum\KumAppInfoConverter.cs" />
+    <Compile Include="Adapters\Kum\KumDll.cs" />
+    <Compile Include="Adapters\LYP\Extension.cs" />
+    <Compile Include="Adapters\LYP\LypApiWrapper.cs" />
+    <Compile Include="Adapters\LYP\LypAppInfoConverter.cs" />
+    <Compile Include="Adapters\LYP\LypDelegates.cs" />
+    <Compile Include="Adapters\MQ\Extension.cs" />
+    <Compile Include="Adapters\MQ\MQApiWrapper.cs" />
+    <Compile Include="Adapters\MQ\MQAppInfoConverter.cs" />
+    <Compile Include="Adapters\MQ\MYQQDLL.cs" />
+    <Compile Include="Adapters\Xlz\Extension.cs" />
+    <Compile Include="Adapters\Xlz\Structs\EventTypeBase.cs" />
+    <Compile Include="Adapters\Xlz\Structs\MessageEvent.cs" />
+    <Compile Include="Adapters\Xlz\Structs\PrivateMessageEvent.cs" />
+    <Compile Include="Adapters\Xlz\Structs\XlzGroupMessageEvent.cs" />
+    <Compile Include="Adapters\Xlz\XlzApiDelegates.cs" />
+    <Compile Include="Adapters\Xlz\XlzApiWrapper.cs" />
+    <Compile Include="Adapters\Xlz\XlzAppInfoConverter.cs" />
+    <Compile Include="Adapters\Xlz\XlzCodeProvider.cs" />
+    <Compile Include="Adapters\XQ\Extension.cs" />
+    <Compile Include="Adapters\XQ\XQApiWrapper.cs" />
+    <Compile Include="Adapters\XQ\XQAppInfoConverter.cs" />
+    <Compile Include="Adapters\XQ\XQDLL.cs" />
     <Compile Include="AmiableService.cs" />
     <Compile Include="Events\Common_Event.cs" />
     <Compile Include="Events\MessageEvents.cs" />
     <Compile Include="Events\PluginEvents.cs" />
+    <Compile Include="Events\RequestEvents.cs" />
     <Compile Include="Exports\Export.cs" />
     <Compile Include="Exports\KumExport.cs" />
     <Compile Include="Exports\LYPExport.cs" />
@@ -97,10 +124,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Amiable.Adapters\Amiable.Adapters.csproj">
-      <Project>{9428aab9-3589-41eb-916a-547e62c0955c}</Project>
-      <Name>Amiable.Adapters</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Amiable.SDK\Amiable.SDK.csproj">
       <Project>{13892293-78BE-48C4-AD20-2622BCB3CB06}</Project>
       <Name>Amiable.SDK</Name>
@@ -108,6 +131,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Adapters\Ono\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\HuajiTech.UnmanagedExports.MSBuild.1.0.0-rc2\build\HuajiTech.UnmanagedExports.MSBuild.targets" Condition="Exists('..\packages\HuajiTech.UnmanagedExports.MSBuild.1.0.0-rc2\build\HuajiTech.UnmanagedExports.MSBuild.targets')" />

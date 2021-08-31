@@ -29,8 +29,8 @@ namespace Amiable.Core
                 { "banproaddres ", Xlz_Delegates.Get(Xlz_Delegates.AppDisabledDelegate) },
                 { "setproaddres", Xlz_Delegates.Get(Xlz_Delegates.AppSettingDelegate) }
             };
-            PreInitEvent(pluginkey, apidata, delegateIntptrs);
-            return InitEvent(pluginkey);
+            EventCore.PreInitEvent(pluginkey, apidata, delegateIntptrs);
+            return EventCore.InitEvent(pluginkey);
         }
     }
 
@@ -66,7 +66,7 @@ namespace Amiable.Core
             {
                 Robot = s.ThisQQ
             });
-            Export.Event_PrivateMessage(DateTime.Now.Ticks, s.ThisQQ, "", 0,
+            MessageEvents.Event_PrivateMessage(DateTime.Now.Ticks, s.ThisQQ, "", 0,
                  s.SenderQQ, s.MessageContent, 0, s);
             return 0;
         };
@@ -78,7 +78,7 @@ namespace Amiable.Core
             {
                 Robot = s.ThisQQ
             });
-            Export.Event_GroupMessage(DateTime.Now.Ticks, s.ThisQQ, "normal", s.MessageAppID,
+            MessageEvents.Event_GroupMessage(DateTime.Now.Ticks, s.ThisQQ, "normal", s.MessageAppID,
                 s.MessageGroupQQ, s.SenderQQ, s.MessageContent, 0, s);
             return 0;
         };
@@ -88,7 +88,7 @@ namespace Amiable.Core
         public static RobotAppEnable RobotAppEnableDelegate = delegate () { return 0; };
         public static AppSetting AppSettingDelegate = delegate ()
         {
-            Export.Event_PluginMenu(new());
+            PluginEvents.Event_PluginMenu(new());
             return 0;
         };
         public static AppUninstall AppUninstallDelegate = delegate () { };

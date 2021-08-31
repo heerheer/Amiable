@@ -14,7 +14,7 @@ namespace Amiable.Core
             try
             {
                 var e = JsonSerializer.Deserialize<AmiableMessageEventArgs>(raw);
-                return Event_GroupMessage(e);//触发标准事件
+                return MessageEvents.Event_GroupMessage(e);//触发标准事件
 
             }
             catch (Exception ex)
@@ -31,7 +31,7 @@ namespace Amiable.Core
             try
             {
                 var e = JsonSerializer.Deserialize<AmiableMessageEventArgs>(raw);
-                return Event_PrivateMessage(e);//触发标准事件
+                return MessageEvents.Event_PrivateMessage(e);//触发标准事件
             }
             catch (Exception ex)
             {
@@ -44,7 +44,7 @@ namespace Amiable.Core
         [DllExport]//插件启用
         public static int plugin_qy()
         {
-            Event_PluginEnable(GetAmiableEventArgs(DateTime.Now.Ticks, 0, SDK.Enum.EventType.META_EVENT));
+            PluginEvents.Event_PluginEnable(EventCore.GetAmiableEventArgs(DateTime.Now.Ticks, 0, SDK.Enum.EventType.META_EVENT));
 
             return 0;
         }
@@ -60,7 +60,7 @@ namespace Amiable.Core
         [DllExport]//框架启动
         public static int kj_qd()
         {
-            Event_PluginLoad(GetAmiableEventArgs(DateTime.Now.Ticks, 0, SDK.Enum.EventType.META_EVENT));
+            PluginEvents.Event_PluginLoad(EventCore.GetAmiableEventArgs(DateTime.Now.Ticks, 0, SDK.Enum.EventType.META_EVENT));
 
             return 0;
         }
@@ -69,13 +69,13 @@ namespace Amiable.Core
         public static string plugin_info()
         {
             AmiableService.ApiKey = "Kum";
-            return InitEvent();
+            return EventCore.InitEvent();
         }
 
         [DllExport]//框架启动
         public static int plugin_set()
         {
-            Event_PluginMenu(GetAmiableEventArgs(DateTime.Now.Ticks, 0, SDK.Enum.EventType.META_EVENT));
+            PluginEvents.Event_PluginMenu(EventCore.GetAmiableEventArgs(DateTime.Now.Ticks, 0, SDK.Enum.EventType.META_EVENT));
 
             return 0;
         }

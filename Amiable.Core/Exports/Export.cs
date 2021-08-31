@@ -8,7 +8,7 @@ using System;
 
 namespace Amiable.Core
 {
-    public static partial class Export
+    public static class EventCore
     {
         //测试用导出函数，是个菜单
         [DllExport]
@@ -21,7 +21,7 @@ namespace Amiable.Core
         /// 预加载事件
         /// </summary>
         /// <param name="args"></param>
-        private static void PreInitEvent(params object[] args)
+        public static void PreInitEvent(params object[] args)
         {
             //初始化API包装器
             try
@@ -40,7 +40,7 @@ namespace Amiable.Core
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-        private static string InitEvent(params object[] args)
+        public static string InitEvent(params object[] args)
         {
 
             try
@@ -59,7 +59,7 @@ namespace Amiable.Core
         /// 插件创建完成
         /// </summary>
         /// <param name="args"></param>
-        private static void AfterInitEvent(params object[] args)
+        public static void AfterInitEvent(params object[] args)
         {
             AmiableService.App.SetApiKey(AmiableService.ApiKey);
             //TODO
@@ -102,7 +102,7 @@ namespace Amiable.Core
             }
         }
 
-        private static AmiableEventArgs GetAmiableEventArgs(long timestamp, long robot, EventType eventType)
+        public static AmiableEventArgs GetAmiableEventArgs(long timestamp, long robot, EventType eventType)
         {
             return new AmiableEventArgs
             {

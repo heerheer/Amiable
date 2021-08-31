@@ -3,7 +3,7 @@ using Amiable.SDK.EventArgs;
 
 namespace Amiable.Core
 {
-    public static partial class Export
+    public static class PluginEvents
     {
 
 
@@ -15,7 +15,7 @@ namespace Amiable.Core
         {
             AmiableEventType amiableEventType = AmiableEventType.PluginLoaded;
 
-            InvokeEvents(amiableEventType, eventArgs);
+            EventCore.InvokeEvents(amiableEventType, eventArgs);
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace Amiable.Core
         {
             AmiableEventType amiableEventType = AmiableEventType.PluginEnable;
 
-            InvokeEvents(amiableEventType, eventArgs);
+            EventCore.InvokeEvents(amiableEventType, eventArgs);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Amiable.Core
         {
             AmiableEventType amiableEventType = AmiableEventType.PluginMenu;
 
-            InvokeEvents(amiableEventType, eventArgs);
+            EventCore.InvokeEvents(amiableEventType, eventArgs);
 
             return 0;
         }

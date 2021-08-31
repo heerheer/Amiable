@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Amiable.SDK.Wrapper;
 using System.IO;
 using Amiable.SDK.Interface;
-using Amiable.SDK.Configuration;
 using Amiable.SDK.DefaultComponent;
 
 // ReSharper disable CollectionNeverQueried.Global
@@ -111,8 +110,6 @@ namespace Amiable.SDK
         }
 
         public List<IEventFilter> EventFilters = new();
-
-        public List<IService> Services = new();
 
         /// <summary>
         /// 设置AppInfo转换文本实例

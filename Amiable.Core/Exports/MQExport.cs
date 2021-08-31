@@ -21,7 +21,7 @@ namespace Amiable.Core
         public static void MQ_Set()
         {
             AmiableService.ApiKey = "MQ";
-            Event_PluginMenu(
+            PluginEvents.Event_PluginMenu(
                 new SDK.EventArgs.AmiableEventArgs { Robot = 0, EventType = SDK.Enum.EventType.META_EVENT, Timestamp = DateTime.Now.Ticks });
         }
 
@@ -29,7 +29,7 @@ namespace Amiable.Core
         public static string MQ_Info()
         {
             AmiableService.ApiKey = "MQ";
-            return InitEvent();
+            return EventCore.InitEvent();
         }
 
         [DllExport]
