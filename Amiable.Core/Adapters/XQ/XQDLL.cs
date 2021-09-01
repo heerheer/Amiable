@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Amiable.Adapter.XQ
+namespace Amiable.Adapter.Ono
 {
     internal class XQDLL
     {

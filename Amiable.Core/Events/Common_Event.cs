@@ -1,9 +1,10 @@
-﻿using Amiable.SDK.DefaultComponent;
+﻿using Amiable.Core.Service;
+using Amiable.SDK.DefaultComponent;
 using System;
 
 namespace Amiable.Core
 {
-    public static partial class Export
+    public static class CommonEvents
     {
         public static int XX_Event(string robotQQ, int eventType, int extraType, string from, string fromQQ, string targetQQ, string content, string index, string msgid, string udpmsg, string unix, long p)
         {

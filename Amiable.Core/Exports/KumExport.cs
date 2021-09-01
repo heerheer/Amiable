@@ -1,4 +1,5 @@
-﻿using Amiable.SDK.EventArgs;
+﻿using Amiable.Core.Service;
+using Amiable.SDK.EventArgs;
 using HuajiTech.UnmanagedExports;
 using System;
 using System.Text.Json;
@@ -6,7 +7,7 @@ using System.Text.Json;
 namespace Amiable.Core
 {
     //Moh
-    public static partial class Export
+    public static partial class KumExpport
     {
         [DllExport(EntryPoint = "sj_ql")]//消息_事件_收到群聊消息
         public static int Kum_GroupMsg_AAAAAAAAAAAAAA(string self_id, string sub_type, string msg_id, string group_id, string sender_id, string msg, string anym, string sender_info, string raw)

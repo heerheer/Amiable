@@ -7,10 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Amiable.SDK;
 using Amiable.SDK.EventArgs;
+using Amiable.Core.Service;
 
 namespace Amiable.Core
 {
-    public static partial class Export
+    public static class LypExport
     {
         [DllExport]
         public static IntPtr AppInfo()

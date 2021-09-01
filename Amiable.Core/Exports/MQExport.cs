@@ -1,9 +1,10 @@
-﻿using HuajiTech.UnmanagedExports;
+﻿using Amiable.Core.Service;
+using HuajiTech.UnmanagedExports;
 using System;
 
 namespace Amiable.Core
 {
-    public static partial class Export
+    public static class MQExport
     {
 
 
@@ -38,7 +39,7 @@ namespace Amiable.Core
         {
             try
             {
-                return XX_Event(robotQQ, eventType, extraType, from, fromQQ, targetQQ, content, index, msgid, udpmsg, unix, p.ToInt64());
+                return CommonEvents.XX_Event(robotQQ, eventType, extraType, from, fromQQ, targetQQ, content, index, msgid, udpmsg, unix, p.ToInt64());
 
             }
             catch (Exception ex)

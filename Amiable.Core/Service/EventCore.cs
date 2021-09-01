@@ -6,7 +6,7 @@ using Amiable.SDK.Wrapper;
 using HuajiTech.UnmanagedExports;
 using System;
 
-namespace Amiable.Core
+namespace Amiable.Core.Service
 {
     public static class EventCore
     {

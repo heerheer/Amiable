@@ -10,7 +10,7 @@
   <PropertyGroup>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <Version>1.0.3</Version>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <Authors>Heer Kaisair</Authors>
     <Company>Amiable Inc.</Company>
     <Description>Amiable的SDK,用于编写Adapter与插件项目。</Description>

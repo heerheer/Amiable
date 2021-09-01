@@ -1,8 +1,9 @@
-﻿using HuajiTech.UnmanagedExports;
+﻿using Amiable.Core.Service;
+using HuajiTech.UnmanagedExports;
 
 namespace Amiable.Core
 {
-    public static partial class Export
+    public static partial class XQExport
     {
         [DllExport]
         public static void XQ_AuthId(short id, int IMAddr) => XQ_AuthCode(id, IMAddr);
@@ -28,7 +29,7 @@ namespace Amiable.Core
             XQ_Event(string robotQQ, int eventType, int extraType, string from, string fromQQ, string targetQQ, string content, string index, string msgid, string udpmsg, string unix, int p)
         {
             /*对XQ需要的事件的抓换*/
-            return XX_Event(robotQQ, eventType, extraType, from, fromQQ, targetQQ, content, index, msgid, udpmsg, unix, p);
+            return CommonEvents.XX_Event(robotQQ, eventType, extraType, from, fromQQ, targetQQ, content, index, msgid, udpmsg, unix, p);
         }
 
         [DllExport]

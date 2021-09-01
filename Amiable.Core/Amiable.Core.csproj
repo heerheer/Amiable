@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Amiable.Core</RootNamespace>
-    <AssemblyName>AmiDraw</AssemblyName>
+    <AssemblyName>Amiable.Example</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -92,6 +92,10 @@
     <Compile Include="Adapters\MQ\MQApiWrapper.cs" />
     <Compile Include="Adapters\MQ\MQAppInfoConverter.cs" />
     <Compile Include="Adapters\MQ\MYQQDLL.cs" />
+    <Compile Include="Adapters\Ono\Extension.cs" />
+    <Compile Include="Adapters\Ono\OnoApiWrapper.cs" />
+    <Compile Include="Adapters\Ono\OnoAppInfoConverter.cs" />
+    <Compile Include="Adapters\Ono\OnoDLL.cs" />
     <Compile Include="Adapters\Xlz\Extension.cs" />
     <Compile Include="Adapters\Xlz\Structs\EventTypeBase.cs" />
     <Compile Include="Adapters\Xlz\Structs\MessageEvent.cs" />
@@ -110,7 +114,8 @@
     <Compile Include="Events\MessageEvents.cs" />
     <Compile Include="Events\PluginEvents.cs" />
     <Compile Include="Events\RequestEvents.cs" />
-    <Compile Include="Exports\Export.cs" />
+    <Compile Include="Exports\OnoExport.cs" />
+    <Compile Include="Service\EventCore.cs" />
     <Compile Include="Exports\KumExport.cs" />
     <Compile Include="Exports\LYPExport.cs" />
     <Compile Include="Exports\MQExport.cs" />
@@ -132,9 +137,7 @@
   <ItemGroup>
     <None Include="FodyWeavers.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Adapters\Ono\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\HuajiTech.UnmanagedExports.MSBuild.1.0.0-rc2\build\HuajiTech.UnmanagedExports.MSBuild.targets" Condition="Exists('..\packages\HuajiTech.UnmanagedExports.MSBuild.1.0.0-rc2\build\HuajiTech.UnmanagedExports.MSBuild.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

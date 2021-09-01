@@ -1,4 +1,4 @@
-﻿using Amiable.Adapter.XQ;
+﻿using Amiable.Adapter.Ono;
 using Amiable.SDK;
 using Amiable.SDK.DefaultComponent;
 

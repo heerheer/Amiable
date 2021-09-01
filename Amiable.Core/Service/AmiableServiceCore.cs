@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Amiable.SDK.Enum;
 using System.Reflection;
+using Amiable.Core.Service;
 
 namespace Amiable.Core
 {

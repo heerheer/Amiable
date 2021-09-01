@@ -4,7 +4,7 @@ using System;
 using System.IO;
 using System.Linq;
 
-namespace Amiable.Adapter.XQ
+namespace Amiable.Adapter.Ono
 {
     /// <summary>
     /// 对XQAPI的包装实现

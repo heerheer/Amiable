@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Amiable.Adapters.Xlz.Structs
+namespace Amiable.Core.Adapters.Xlz.Structs
 {
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]

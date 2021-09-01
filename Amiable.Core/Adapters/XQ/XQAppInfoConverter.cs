@@ -4,7 +4,7 @@ using System.IO;
 using System.Text;
 using System.Text.Json;
 
-namespace Amiable.Adapter.XQ
+namespace Amiable.Adapter.Ono
 {
     /// <summary>
     /// 允许将AppInfo转换为先驱可用的Json

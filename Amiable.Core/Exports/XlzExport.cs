@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Amiable.Adapters.Xlz;
+using Amiable.Core.Service;
 using Amiable.SDK.EventArgs;
 using HuajiTech.UnmanagedExports;
 
@@ -9,7 +10,7 @@ using HuajiTech.UnmanagedExports;
 
 namespace Amiable.Core
 {
-    public static partial class Export
+    public static class XlzExport
     {
         [DllExport]
         [return: MarshalAs(UnmanagedType.LPStr)]

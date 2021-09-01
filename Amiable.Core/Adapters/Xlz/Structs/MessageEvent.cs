@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Amiable.Adapters.Xlz.Structs
+namespace Amiable.Core.Adapters.Xlz.Structs
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct MessageEvent
