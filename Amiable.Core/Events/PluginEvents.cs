@@ -14,9 +14,8 @@ namespace Amiable.Core
         /// <param name="eventArgs"></param>
         public static void Event_PluginLoad(AmiableEventArgs eventArgs)
         {
-            AmiableEventType amiableEventType = AmiableEventType.PluginLoaded;
 
-            EventCore.InvokeEvents(amiableEventType, eventArgs);
+            EventCore.InvokeEvents(AmiableEventType.PluginLoaded, eventArgs);
         }
 
         /// <summary>

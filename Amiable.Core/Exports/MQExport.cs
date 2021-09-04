@@ -37,6 +37,7 @@ namespace Amiable.Core
         public static int
             MQ_Event(string robotQQ, int eventType, int extraType, string from, string fromQQ, string targetQQ, string content, string index, string msgid, string udpmsg, string unix, IntPtr p)
         {
+            AmiableService.ApiKey = "MQ";
             try
             {
                 return CommonEvents.XX_Event(robotQQ, eventType, extraType, from, fromQQ, targetQQ, content, index, msgid, udpmsg, unix, p.ToInt64());

@@ -31,6 +31,7 @@ namespace Amiable.Core
 
         static AmiableService()
         {
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             //初始化
             App = new AppService();
             SetAppInfo();
@@ -42,5 +43,10 @@ namespace Amiable.Core
             AmiableService.App.Log("[AppDomain]", AppDomain.CurrentDomain.FriendlyName);
         }
 
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            AmiableService.App.Log("[AppDomainError]", e.ExceptionObject.ToString());
+
+        }
     }
 }

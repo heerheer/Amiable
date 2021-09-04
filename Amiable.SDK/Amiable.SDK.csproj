@@ -9,34 +9,11 @@
   
   <PropertyGroup>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <Version>1.0.3</Version>
-    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-    <Authors>Heer Kaisair</Authors>
-    <Company>Amiable Inc.</Company>
-    <Description>Amiable的SDK,用于编写Adapter与插件项目。</Description>
-    <PackageIcon>Amiable_Icon.png</PackageIcon>
-    <PackageIconUrl />
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageLicenseFile>you should konw.txt</PackageLicenseFile>
   </PropertyGroup>
   
-  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <OutputPath>..\publish\nuget</OutputPath>
-  </PropertyGroup>
   
   <ItemGroup>
     <PackageReference Include="System.Text.Json" Version="5.0.0" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <None Include="..\Amiable_Icon.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-    <None Include="..\you should konw.txt">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
   </ItemGroup>
 
 </Project>

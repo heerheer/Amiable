@@ -15,6 +15,7 @@ using Amiable.Core.Adapters.Ono;
 using Amiable.SDK.Enum;
 using Amiable.SDK.EventArgs;
 using System.Text;
+using Amiable.Core.Adapters.Mini;
 
 namespace Amiable.Core
 {
@@ -54,10 +55,10 @@ namespace Amiable.Core
         public static void ServiceBuilder(AppService service)
         {
             //添加对这些框架的API包装器
-            service.AddMQConfig().AddKumConfig().AddXQConfig().AddLypConfig().AddXlzConfig().AddOnoConfig();
+            service.AddMQConfig().AddKumConfig().AddXQConfig().AddLypConfig().AddXlzConfig().AddOnoConfig().AddMiniConfig();
         }
 
-        
+
     }
 
     public class TestEvent : IPluginEvent
