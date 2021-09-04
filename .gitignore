@@ -363,4 +363,6 @@ MigrationBackup/
 FodyWeavers.xsd
 
 #Amiable Export
-app.public/
+publish/
+
+.idea/
