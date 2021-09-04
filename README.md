@@ -15,6 +15,7 @@
 ![XQ适配器](https://img.shields.io/badge/XQ--Adapter-1.0-yellow)
 ![Lyp适配器](https://img.shields.io/badge/小羽+--Adapter-1.0-yellow)
 ![小栗子适配器](https://img.shields.io/badge/Xlz--Adapter-1.0-gray)
+![QQMini适配器](https://img.shields.io/badge/MiniBot--Adapter-1.0-red)
  </div>
  
 ## 注意
