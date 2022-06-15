@@ -1,3 +1,6 @@
+# 项目已归档，请使用基于HTTPAPI的AmiableNext开发MYQQ插件。
+https://github.com/heerheer/AmiableNext
+
 
 # Amiable
 <div align=center>
